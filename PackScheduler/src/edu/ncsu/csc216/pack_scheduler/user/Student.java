@@ -21,12 +21,12 @@ public class Student {
 	 * @throws IlleagalArgumentException Thrown if setters throw IllegalArgumentException
 	 */
 	public Student(String firstName, String lastName, String id, String email, String password, int maxCredits) throws IllegalArgumentException {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.id = id;
-		this.email = email;
-		this.password = password;
-		this.maxCredits = maxCredits;
+		this.setFirstName(firstName);
+		this.setLastName(lastName);
+		this.setId(id);
+		this.setEmail(email);
+		this.setPassword(password);
+		this.setMaxCredits(maxCredits);
 	}
 	
 	/**
@@ -40,7 +40,7 @@ public class Student {
 	 * @throws IlleagalArgumentException Thrown if setters throw IllegalArgumentException
 	 */
 	public Student(String firstName, String lastName, String id, String email, String password) {
-		this(firstName,lastName, id, email, password, MAX_CREDITS);
+		this(firstName, lastName, id, email, password, MAX_CREDITS);
 	}
 	
 	/**
