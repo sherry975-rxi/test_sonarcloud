@@ -40,7 +40,7 @@ public class Student {
 	 * @throws IlleagalArgumentException Thrown if setters throw IllegalArgumentException
 	 */
 	public Student(String firstName, String lastName, String id, String email, String password) {
-		this(firstName,lastName,id,email,password,MAX_CREDITS);
+		this(firstName,lastName, id, email, password, MAX_CREDITS);
 	}
 	
 	/**
