@@ -238,8 +238,8 @@ public class Student {
 	 */
 	@Override
 	public String toString() {
-		return "Student [firstName=" + firstName + ", lastName=" + lastName + ", id=" + id + ", email=" + email
-				+ ", password=" + password + ", maxCredits=" + maxCredits + "]";
+		return "firstName" + " ," + "lastName" + " ," + "id" + " ," + "email" + " ," + 
+				"password" + " ," + "maxCredits";
 	}
 
 }
