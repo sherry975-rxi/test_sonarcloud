@@ -26,7 +26,6 @@ public class StudentRecordIO {
 	public static ArrayList<Student> readStudentRecords(String fileName) throws FileNotFoundException {
 		
 		Scanner scan = new Scanner(new FileInputStream(fileName));
-		
 		ArrayList<Student> students = new ArrayList<Student>();
 		
 		while (scan.hasNextLine()) {
