@@ -166,7 +166,7 @@ public class Student {
 	 */
 	private void setId(String id) {
 		if((id == null) || (id.isEmpty())) {
-			throw new IllegalArgumentException("Invalid ig");
+			throw new IllegalArgumentException("Invalid id");
 			}
 		this.id = id;
 	}
@@ -238,8 +238,8 @@ public class Student {
 	 */
 	@Override
 	public String toString() {
-		return "firstName" + ", " + "lastName" + ", " + "id" + ", " + "email" + ", " + 
-				"password" + ", " + "maxCredits";
+		return "" + this.getFirstName() + ", " + this.getLastName() + ", " + id + ", " + 
+				this.getEmail() + ", " + this.getPassword() + ", " + this.getMaxCredits();
 	}
 
 }
