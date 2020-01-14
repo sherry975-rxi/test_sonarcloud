@@ -8,7 +8,8 @@ public class Student {
 	private String email;
 	private String password;
 	private int maxCredits;
-	static final int MAX_CREDITS = 18;
+	/** The maximum credit hours a student can take */
+	public static final int MAX_CREDITS = 18;
 
 	/**
 	 * Creates a Student object using their firstName, lastName, email, password, and maxCredits.
