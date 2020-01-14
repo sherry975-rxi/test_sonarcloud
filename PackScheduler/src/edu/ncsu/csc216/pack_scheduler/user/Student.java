@@ -238,8 +238,8 @@ public class Student {
 	 */
 	@Override
 	public String toString() {
-		return "" + this.getFirstName() + ", " + this.getLastName() + ", " + id + ", " + 
-				this.getEmail() + ", " + this.getPassword() + ", " + this.getMaxCredits();
+		return "" + this.getFirstName() + "," + this.getLastName() + "," + id + "," + 
+				this.getEmail() + "," + this.getPassword() + "," + this.getMaxCredits();
 	}
 
 }
