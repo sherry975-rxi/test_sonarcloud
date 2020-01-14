@@ -65,9 +65,14 @@ public class StudentRecordIO {
 		String id = in.next();
 		String email = in.next();
 		String password = in.next();
-		int credits = in.nextInt();
+		Student student;
+		if (in.hasNextInt()) {
+			int credits = in.nextInt();
+			student = new Student(first, last, id, email, password, credits);
+		} else {
+			student = new Student(first, last, id, email, password);
+		}
 		in.close();
-		Student student = new Student(first, last, id, email, password, credits);
 		return student;
 		
 	}
