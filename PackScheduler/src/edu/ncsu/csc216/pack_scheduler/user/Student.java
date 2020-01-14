@@ -63,7 +63,7 @@ public class Student {
 				|| (!email.contains("@")) || (!email.contains("."))
 				|| (email.lastIndexOf(".") < email.indexOf("@"))
 				) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid email");
 			}
 		this.email = email;
 	}
@@ -84,7 +84,7 @@ public class Student {
 	 */
 	public void setPassword(String password) {
 		if((password == null) || (password.isEmpty())) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid password");
 			}
 		this.password = password;
 	}
@@ -106,7 +106,7 @@ public class Student {
 	 */
 	public void setMaxCredits(int maxCredits) {
 		if((maxCredits < 3) || (maxCredits > MAX_CREDITS)) { //MAX_CREDITS should be 18 so it should throw if <3 and >18
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid max credits");
 			}
 		this.maxCredits = maxCredits;
 	}
@@ -126,7 +126,7 @@ public class Student {
 	 */
 	public void setFirstName(String firstName) {
 		if((firstName == null) || (firstName.isEmpty())) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid first name");
 			}
 		this.firstName = firstName;
 	}
@@ -146,7 +146,7 @@ public class Student {
 	 */
 	public void setLastName(String lastName) {
 		if((lastName == null) || (lastName.isEmpty())) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid last name");
 			}
 		this.lastName = lastName;
 	}
@@ -166,7 +166,7 @@ public class Student {
 	 */
 	private void setId(String id) {
 		if((id == null) || (id.isEmpty())) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid ig");
 			}
 		this.id = id;
 	}
@@ -238,8 +238,8 @@ public class Student {
 	 */
 	@Override
 	public String toString() {
-		return "firstName" + " ," + "lastName" + " ," + "id" + " ," + "email" + " ," + 
-				"password" + " ," + "maxCredits";
+		return "firstName" + ", " + "lastName" + ", " + "id" + ", " + "email" + ", " + 
+				"password" + ", " + "maxCredits";
 	}
 
 }
