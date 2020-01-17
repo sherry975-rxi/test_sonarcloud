@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -46,7 +47,7 @@ public class StudentRecordIO {
 	 * @throws IOException thrown if unable to write to the fileName
 	 */
 	public static void writeStudentRecords(String fileName, ArrayList<Student> studentDirectory) throws IOException {
-		PrintStream output = new PrintStream(new File (fileName)); // TODO Auto-generated method stub
+		PrintStream output = new PrintStream(new File (fileName));
 
 		for (int i = 0; i < studentDirectory.size(); i++) {
 			output.println(studentDirectory.get(i).toString());
@@ -71,22 +72,32 @@ public class StudentRecordIO {
 		String id = in.next();
 		String email = in.next();
 		String password = in.next();
-		System.out.println("First: " + first + " | Last: " + last + " | ID: " + id + " | Email: " + email + " | Password: " + password + " | Password Hash Length: " + password.length());
 		
-		if (in.hasNextInt()) {
-			int credits = in.nextInt();
-			try {
-				student = new Student(first, last, id, email, password, credits);
-			}
-			catch (IllegalArgumentException e) {
-//				//Since the student's data does't make sense, a Null will be returned instead
-			}
-		} else {
-			try {
-				student = new Student(first, last, id, email, password);
-			}
-			catch (IllegalArgumentException e) {
-//				//Since the student's data does't make sense, a Null will be returned instead
+		System.out.println("First: " + first + " | Last: " + last + " | ID: " + id + " | Email: " + email + " | Password: " + password + " | Password Hash Length: " + password.length());
+		//+ " | Password Byte Size: " + password.getBytes("UTF-16"));
+		try {
+			System.out.println(password.getBytes("ISO-8859-1").length);
+		}
+		catch (UnsupportedEncodingException e){
+			//Yuh
+		}
+		
+		if (password.length() == 32) {
+			if (in.hasNextInt()) {
+				int credits = in.nextInt();
+				try {
+					student = new Student(first, last, id, email, password, credits);
+				}
+				catch (IllegalArgumentException e) {
+	//				//Since the student's data does't make sense, a Null will be returned instead
+				}
+			} else {
+				try {
+					student = new Student(first, last, id, email, password);
+				}
+				catch (IllegalArgumentException e) {
+	//				//Since the student's data does't make sense, a Null will be returned instead
+				}
 			}
 		}
 
