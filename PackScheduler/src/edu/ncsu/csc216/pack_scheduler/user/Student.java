@@ -75,11 +75,15 @@ public class Student {
 	 * @throws IllegalArgumentException if email is not entered in correct format
 	 */
 	public void setEmail(String email) {
-		if(email == null || email.isEmpty()
-				|| !(email.contains("@")) || !(email.contains("."))
-				|| email.lastIndexOf(".") < email.indexOf("@")) {
+		if(email == null || email.isEmpty()) {
 			throw new IllegalArgumentException("Invalid email");
-			}
+		}
+		if (!(email.contains("@")) || !(email.contains("."))) {
+			throw new IllegalArgumentException("Invalid email");
+		}
+		if (email.lastIndexOf(".") < email.indexOf("@")) {
+			throw new IllegalArgumentException("Invalid email");
+		}
 		this.email = email;
 	}
 
