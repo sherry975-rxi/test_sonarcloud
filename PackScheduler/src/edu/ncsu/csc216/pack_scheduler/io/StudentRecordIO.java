@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import edu.ncsu.csc216.pack_scheduler.user.Student;
@@ -58,20 +59,27 @@ public class StudentRecordIO {
 	 * @return student a Student created from the information in the file line
 	 */
 	private static Student processStudent(String line) {
+		Student student = null;
 		Scanner in = new Scanner(line);
-		in.useDelimiter(",");
-		String first = in.next();
-		String last = in.next();
-		String id = in.next();
-		String email = in.next();
-		String password = in.next();
-		Student student;
-		if (in.hasNextInt()) {
-			int credits = in.nextInt();
-			student = new Student(first, last, id, email, password, credits);
-		} else {
-			student = new Student(first, last, id, email, password);
+		try {
+			in.useDelimiter(",");
+			String first = in.next();
+			String last = in.next();
+			String id = in.next();
+			String email = in.next();
+			String password = in.next();
+			
+			if (in.hasNextInt()) {
+				int credits = in.nextInt();
+				student = new Student(first, last, id, email, password, credits);
+			} else {
+				student = new Student(first, last, id, email, password);
+			}
+		} catch (NoSuchElementException e) {
+			in.close();
+			throw new IllegalArgumentException();
 		}
+		
 		in.close();
 		return student;
 		
