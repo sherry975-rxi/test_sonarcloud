@@ -30,9 +30,10 @@ public class StudentRecordIO {
 
 		while (scan.hasNextLine()) {
 			Student addingStudent = processStudent(scan.nextLine());
-			if(addingStudent != null) {
+//			if(addingStudent != null) {
+			System.out.println(addingStudent.toString());
 				students.add(addingStudent);
-			}
+//			}
 		}
 		scan.close();
 		return students;
@@ -70,22 +71,23 @@ public class StudentRecordIO {
 		String id = in.next();
 		String email = in.next();
 		String password = in.next();
-
+		System.out.println("First: " + first + "| Last: " + last + "| ID: " + id + "| Email: " + email + "| Password: " + password);
+		
 		if (in.hasNextInt()) {
 			int credits = in.nextInt();
-			try {
+//			try {
 				student = new Student(first, last, id, email, password, credits);
-			}
-			catch (IllegalArgumentException e) {
-				//Since the student's data does't make sense, a Null will be returned instead
-			}
+//			}
+//			catch (IllegalArgumentException e) {
+//				//Since the student's data does't make sense, a Null will be returned instead
+//			}
 		} else {
-			try {
+//			try {
 				student = new Student(first, last, id, email, password);
-			}
-			catch (IllegalArgumentException e) {
-				//Since the student's data does't make sense, a Null will be returned instead
-			}
+//			}
+//			catch (IllegalArgumentException e) {
+//				//Since the student's data does't make sense, a Null will be returned instead
+//			}
 		}
 
 		in.close();
