@@ -75,19 +75,19 @@ public class StudentRecordIO {
 		
 		if (in.hasNextInt()) {
 			int credits = in.nextInt();
-//			try {
+			try {
 				student = new Student(first, last, id, email, password, credits);
-//			}
-//			catch (IllegalArgumentException e) {
-//				//Since the student's data does't make sense, a Null will be returned instead
-//			}
+			}
+			catch (IllegalArgumentException e) {
+				//Since the student's data does't make sense, a Null will be returned instead
+			}
 		} else {
-//			try {
+			try {
 				student = new Student(first, last, id, email, password);
-//			}
-//			catch (IllegalArgumentException e) {
-//				//Since the student's data does't make sense, a Null will be returned instead
-//			}
+			}
+			catch (IllegalArgumentException e) {
+				//Since the student's data does't make sense, a Null will be returned instead
+			}
 		}
 
 		in.close();
