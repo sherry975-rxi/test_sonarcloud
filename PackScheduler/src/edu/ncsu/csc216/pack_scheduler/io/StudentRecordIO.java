@@ -85,7 +85,7 @@ public class StudentRecordIO {
 				student = new Student(first, last, id, email, password);
 			}
 
-		} catch (NoSuchElementException e) {
+		} catch (IllegalArgumentException e) {
 			in.close();
 			throw new IllegalArgumentException("Could not read student");
 		}
