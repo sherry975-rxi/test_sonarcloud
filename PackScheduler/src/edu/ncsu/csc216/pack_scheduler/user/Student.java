@@ -4,7 +4,7 @@ package edu.ncsu.csc216.pack_scheduler.user;
  * The Student class contains identifier information for each student object created.
  * Detailed information regarding the students firstName, lastName, id, email,
  * password, and the maxCredits the student can have is stored in each instance.
- * 
+ * @author Christopher Wagner
  */
 
 public class Student {
