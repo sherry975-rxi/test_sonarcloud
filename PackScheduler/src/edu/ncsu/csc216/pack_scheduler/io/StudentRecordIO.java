@@ -29,7 +29,10 @@ public class StudentRecordIO {
 		ArrayList<Student> students = new ArrayList<Student>();
 
 		while (scan.hasNextLine()) {
-			students.add(processStudent(scan.nextLine()));
+			Student addingStudent = processStudent(scan.nextLine());
+			if(addingStudent != null) {
+				students.add(addingStudent);
+			}
 		}
 		scan.close();
 		return students;
@@ -70,9 +73,19 @@ public class StudentRecordIO {
 
 		if (in.hasNextInt()) {
 			int credits = in.nextInt();
-			student = new Student(first, last, id, email, password, credits);
+			try {
+				student = new Student(first, last, id, email, password, credits);
+			}
+			catch (IllegalArgumentException e) {
+				//Since the student's data does't make sense, a Null will be returned instead
+			}
 		} else {
-			student = new Student(first, last, id, email, password);
+			try {
+				student = new Student(first, last, id, email, password);
+			}
+			catch (IllegalArgumentException e) {
+				//Since the student's data does't make sense, a Null will be returned instead
+			}
 		}
 
 		in.close();
