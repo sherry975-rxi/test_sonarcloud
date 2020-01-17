@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
+//import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -72,15 +72,15 @@ public class StudentRecordIO {
 		String id = in.next();
 		String email = in.next();
 		String password = in.next();
-		
+
 		System.out.println("First: " + first + " | Last: " + last + " | ID: " + id + " | Email: " + email + " | Password: " + password + " | Password Hash Length: " + password.length());
 		//+ " | Password Byte Size: " + password.getBytes("UTF-16"));
-		try {
-			System.out.println(password.getBytes("ISO-8859-1").length);
-		}
-		catch (UnsupportedEncodingException e){
-			//Yuh
-		}
+//		try {
+//			System.out.println(password.getBytes("UTF-16").length);
+//		}
+//		catch (UnsupportedEncodingException e){
+//			//Yuh
+//		}
 		
 		if (password.length() == 32) {
 			if (in.hasNextInt()) {
