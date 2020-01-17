@@ -5,6 +5,7 @@ package edu.ncsu.csc216.pack_scheduler.user;
  * Detailed information regarding the students firstName, lastName, id, email,
  * password, and the maxCredits the student can have is stored in each instance.
  * @author Christopher Wagner
+ * @author Jake Lanois
  */
 
 public class Student {
@@ -36,13 +37,7 @@ public class Student {
 		setEmail(email);
 		setPassword(password);
 		setMaxCredits(maxCredits);
-		
-		this.setFirstName(firstName);
-		this.setLastName(lastName);
-		this.setId(id);
-		this.setEmail(email);
-		this.setPassword(password);
-		this.setMaxCredits(maxCredits);
+	
 
 	}
 	
