@@ -1,4 +1,4 @@
-		package edu.ncsu.csc216.pack_scheduler.io;
+package edu.ncsu.csc216.pack_scheduler.io;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import edu.ncsu.csc216.pack_scheduler.user.Student;
@@ -25,10 +24,10 @@ public class StudentRecordIO {
 	 * @throws FileNotFoundException thrown if unable to read the fileName
 	 */
 	public static ArrayList<Student> readStudentRecords(String fileName) throws FileNotFoundException {
-		
+
 		Scanner scan = new Scanner(new FileInputStream(fileName));
 		ArrayList<Student> students = new ArrayList<Student>();
-		
+
 		while (scan.hasNextLine()) {
 			students.add(processStudent(scan.nextLine()));
 		}
@@ -44,15 +43,15 @@ public class StudentRecordIO {
 	 */
 	public static void writeStudentRecords(String fileName, ArrayList<Student> studentDirectory) throws IOException {
 		PrintStream output = new PrintStream(new File (fileName)); // TODO Auto-generated method stub
-		
+
 		for (int i = 0; i < studentDirectory.size(); i++) {
-		    output.println(studentDirectory.get(i).toString());
+			output.println(studentDirectory.get(i).toString());
 		}
-		
+
 		output.close();
-		
+
 	}
-	
+
 	/**
 	 * Method for processing a line containing information to create a Student
 	 * @param line the input line from the FileStream
@@ -61,28 +60,24 @@ public class StudentRecordIO {
 	private static Student processStudent(String line) {
 		Student student = null;
 		Scanner in = new Scanner(line);
-		try {
-			in.useDelimiter(",");
-			String first = in.next();
-			String last = in.next();
-			String id = in.next();
-			String email = in.next();
-			String password = in.next();
-			
-			if (in.hasNextInt()) {
-				int credits = in.nextInt();
-				student = new Student(first, last, id, email, password, credits);
-			} else {
-				student = new Student(first, last, id, email, password);
-			}
-		} catch (NoSuchElementException e) {
-			in.close();
-			throw new IllegalArgumentException();
+
+		in.useDelimiter(",");
+		String first = in.next();
+		String last = in.next();
+		String id = in.next();
+		String email = in.next();
+		String password = in.next();
+
+		if (in.hasNextInt()) {
+			int credits = in.nextInt();
+			student = new Student(first, last, id, email, password, credits);
+		} else {
+			student = new Student(first, last, id, email, password);
 		}
-		
+
 		in.close();
 		return student;
-		
+
 	}
 
 }
