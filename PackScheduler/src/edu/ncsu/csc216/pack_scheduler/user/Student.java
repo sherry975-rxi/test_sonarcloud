@@ -1,5 +1,12 @@
 package edu.ncsu.csc216.pack_scheduler.user;
 
+/**
+ * The Student class contains identifier information for each student object created.
+ * Detailed information regarding the students firstName, lastName, id, email,
+ * password, and the maxCredits the student can have is stored in each instance.
+ * 
+ */
+
 public class Student {
 	
 	private String firstName;
@@ -18,15 +25,15 @@ public class Student {
 	 * @param email The email of the Student
 	 * @param password The password of the Student
 	 * @param maxCredits The max credits of the Student
-	 * @throws IlleagalArgumentException Thrown if setters throw IllegalArgumentException
+	 * @throws IllegalArgumentException Thrown if setters throw IllegalArgumentException
 	 */
 	public Student(String firstName, String lastName, String id, String email, String password, int maxCredits) throws IllegalArgumentException {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.id = id;
-		this.email = email;
-		this.password = password;
-		this.maxCredits = maxCredits;
+		setFirstName(firstName);
+		setLastName(lastName);
+		setId(id);
+		setEmail(email);
+		setPassword(password);
+		setMaxCredits(maxCredits);
 	}
 	
 	/**
@@ -37,7 +44,7 @@ public class Student {
 	 * @param id The id of the Student
 	 * @param email The email of the Student
 	 * @param password The password of the Student
-	 * @throws IlleagalArgumentException Thrown if setters throw IllegalArgumentException
+	 * @throws IllegalArgumentException Thrown if setters throw IllegalArgumentException
 	 */
 	public Student(String firstName, String lastName, String id, String email, String password) {
 		this(firstName,lastName,id,email,password,MAX_CREDITS);
