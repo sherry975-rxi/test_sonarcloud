@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import edu.ncsu.csc216.pack_scheduler.user.Student;
@@ -29,11 +30,13 @@ public class StudentRecordIO {
 		ArrayList<Student> students = new ArrayList<Student>();
 
 		while (scan.hasNextLine()) {
-			Student addingStudent = processStudent(scan.nextLine());
-//			if(addingStudent != null) {
-			System.out.println(addingStudent.toString());
+
+			try {
+				Student addingStudent = processStudent(scan.nextLine());
 				students.add(addingStudent);
-//			}
+			} catch (IllegalArgumentException e) {
+				// skips the line
+			}
 		}
 		scan.close();
 		return students;
@@ -66,33 +69,30 @@ public class StudentRecordIO {
 		Scanner in = new Scanner(line);
 
 		in.useDelimiter(",");
-		String first = in.next();
-		String last = in.next();
-		String id = in.next();
-		String email = in.next();
-		String password = in.next();
-		System.out.println("First: " + first + "| Last: " + last + "| ID: " + id + "| Email: " + email + "| Password: " + password);
-		
-		if (in.hasNextInt()) {
-			int credits = in.nextInt();
-			try {
+
+		try {
+			String first = in.next();
+			String last = in.next();
+			String id = in.next();
+			String email = in.next();
+			String password = in.next();
+			//System.out.println("First: " + first + "| Last: " + last + "| ID: " + id + "| Email: " + email + "| Password: " + password);
+
+			if (in.hasNextInt()) {
+				int credits = in.nextInt();
 				student = new Student(first, last, id, email, password, credits);
-			}
-			catch (IllegalArgumentException e) {
-				//Since the student's data does't make sense, a Null will be returned instead
-			}
-		} else {
-			try {
+			} else {
 				student = new Student(first, last, id, email, password);
 			}
-			catch (IllegalArgumentException e) {
-				//Since the student's data does't make sense, a Null will be returned instead
-			}
-		}
 
+		} catch (NoSuchElementException e) {
+			in.close();
+			throw new IllegalArgumentException("Could not read student");
+		}
+		
 		in.close();
 		return student;
 
 	}
-
+	
 }
