@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
-//import java.io.UnsupportedEncodingException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -32,7 +32,6 @@ public class StudentRecordIO {
 		while (scan.hasNextLine()) {
 			Student addingStudent = processStudent(scan.nextLine());
 			if(addingStudent != null) {
-			System.out.println("Included Student for whatever the frik reason");
 				students.add(addingStudent);
 			}
 		}
@@ -72,33 +71,41 @@ public class StudentRecordIO {
 		String id = in.next();
 		String email = in.next();
 		String password = in.next();
-
-		System.out.println("First: " + first + " | Last: " + last + " | ID: " + id + " | Email: " + email + " | Password: " + password + " | Password Hash Length: " + password.length());
-		//+ " | Password Byte Size: " + password.getBytes("UTF-16"));
+		
+//		DEBUGGING CODE BELOW
+		
+//		System.out.println("First: " + first + " | Last: " + last + " | ID: " + id + " | Email: " + email + " | Password: " + password + " | Password Hash Length: " + password.length());
 //		try {
-//			System.out.println(password.getBytes("UTF-16").length);
+//			System.out.println(password.getBytes("ISO-8859-1").length);
 //		}
 //		catch (UnsupportedEncodingException e){
-//			//Yuh
+//			//It fails and doesn't print the size
 //		}
 		
-		if (password.length() == 32) {
-			if (in.hasNextInt()) {
-				int credits = in.nextInt();
-				try {
-					student = new Student(first, last, id, email, password, credits);
-				}
-				catch (IllegalArgumentException e) {
-	//				//Since the student's data does't make sense, a Null will be returned instead
-				}
-			} else {
-				try {
-					student = new Student(first, last, id, email, password);
-				}
-				catch (IllegalArgumentException e) {
-	//				//Since the student's data does't make sense, a Null will be returned instead
+		try {
+			if (password.getBytes("ISO-8859-1").length == 32) {
+				// SHA-256 Hashing is done in 256bit/32byte encoding. By checking for the password, which IS known to be hashed, it should be 32 byte
+				// The MessageDigest should be 32 bytes, which when checking the byte size, matched up with the ISO-8859-1 character encoding.
+				// We checked the bytesize to check that the password is hashed.
+				if (in.hasNextInt()) {
+					int credits = in.nextInt();
+					try {
+						student = new Student(first, last, id, email, password, credits);
+					}
+					catch (IllegalArgumentException e) {
+						//Since the student's data does't make sense, a Null will be returned instead
+					}
+				} else {
+					try {
+						student = new Student(first, last, id, email, password);
+					}
+					catch (IllegalArgumentException e) {
+						//Since the student's data does't make sense, a Null will be returned instead
+					}
 				}
 			}
+		} catch (UnsupportedEncodingException e) {
+			//Do nothing so the entry with the invalid password will be left out.
 		}
 
 		in.close();
