@@ -75,10 +75,9 @@ public class Student {
 	 * @throws IllegalArgumentException if email is not entered in correct format
 	 */
 	public void setEmail(String email) {
-		if((email == null) || (email.isEmpty())
+		if(email == null || email.isEmpty()
 				|| !(email.contains("@")) || !(email.contains("."))
-				|| (email.lastIndexOf(".") < email.indexOf("@"))
-				) {
+				|| email.lastIndexOf(".") < email.indexOf("@")) {
 			throw new IllegalArgumentException("Invalid email");
 			}
 		this.email = email;
@@ -99,7 +98,7 @@ public class Student {
 	 * @throws IllegalArgumentException if password is null or empty string
 	 */
 	public void setPassword(String password) {
-		if((password == null) || (password.isEmpty())) {
+		if(password == null || password.isEmpty()) {
 			throw new IllegalArgumentException("Invalid password");
 			}
 		this.password = password;
@@ -121,7 +120,7 @@ public class Student {
 	 * @throws IllegalArgumentException if credits are less than 3 or more than MAX_CREDITS
 	 */
 	public void setMaxCredits(int maxCredits) {
-		if((maxCredits < 3) || (maxCredits > MAX_CREDITS)) { //MAX_CREDITS should be 18 so it should throw if <3 and >18
+		if(maxCredits < 3 || maxCredits > MAX_CREDITS) { //MAX_CREDITS should be 18 so it should throw if <3 and >18
 			throw new IllegalArgumentException("Invalid max credits");
 			}
 		this.maxCredits = maxCredits;
@@ -141,7 +140,7 @@ public class Student {
 	 * @throws IllegalArgumentException if firstName is null or empty string
 	 */
 	public void setFirstName(String firstName) {
-		if((firstName == null) || (firstName.isEmpty())) {
+		if(firstName == null || firstName.isEmpty()) {
 			throw new IllegalArgumentException("Invalid first name");
 			}
 		this.firstName = firstName;
@@ -161,7 +160,7 @@ public class Student {
 	 * @throws IllegalArgumentException if lastName is null or empty string
 	 */
 	public void setLastName(String lastName) {
-		if((lastName == null) || (lastName.isEmpty())) {
+		if(lastName == null || lastName.isEmpty()) {
 			throw new IllegalArgumentException("Invalid last name");
 			}
 		this.lastName = lastName;
@@ -181,7 +180,7 @@ public class Student {
 	 * @throws IllegalArgumentException if id is null or empty string
 	 */
 	private void setId(String id) {
-		if((id == null) || (id.isEmpty())) {
+		if(id == null || id.isEmpty()) {
 			throw new IllegalArgumentException("Invalid id");
 			}
 		this.id = id;
