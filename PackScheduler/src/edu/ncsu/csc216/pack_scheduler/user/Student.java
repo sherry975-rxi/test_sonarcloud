@@ -78,7 +78,9 @@ public class Student {
 		if(email == null || email.isEmpty()) {
 			throw new IllegalArgumentException("Invalid email");
 		}
-		if (!(email.contains("@")) || !(email.contains("."))) {
+		if (!(email.contains("@"))) {
+			throw new IllegalArgumentException("Invalid email");
+		} if (!(email.contains("."))) {
 			throw new IllegalArgumentException("Invalid email");
 		}
 		if (email.lastIndexOf(".") < email.indexOf("@")) {
