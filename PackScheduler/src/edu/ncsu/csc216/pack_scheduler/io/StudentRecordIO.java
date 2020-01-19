@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import edu.ncsu.csc216.pack_scheduler.user.Student;
@@ -64,13 +65,25 @@ public class StudentRecordIO {
 	private static Student processStudent(String line) {
 		Student student = null;
 		Scanner in = new Scanner(line);
+		
+		String first = null;
+		String last = null;
+		String id = null;
+		String email = null;
+		String password = null;
 
 		in.useDelimiter(",");
-		String first = in.next();
-		String last = in.next();
-		String id = in.next();
-		String email = in.next();
-		String password = in.next();
+		try {
+			first = in.next();
+			last = in.next();
+			id = in.next();
+			email = in.next();
+			password = in.next();
+		} catch (NoSuchElementException e) {
+			//if one of the elements is missing, it will return null which should be skipped
+			in.close();
+			return null;
+		}
 		
 //		DEBUGGING CODE BELOW
 		
