@@ -72,18 +72,8 @@ public class StudentRecordIO {
 		String email = in.next();
 		String password = in.next();
 		
-//		DEBUGGING CODE BELOW
-		
-//		System.out.println("First: " + first + " | Last: " + last + " | ID: " + id + " | Email: " + email + " | Password: " + password + " | Password Hash Length: " + password.length());
-//		try {
-//			System.out.println(password.getBytes("ISO-8859-1").length);
-//		}
-//		catch (UnsupportedEncodingException e){
-//			//It fails and doesn't print the size
-//		}
-		
 		try {
-			if (password.getBytes("ISO-8859-1").length == 32) {
+			if (password.getBytes("US-ASCII").length == 32) {
 				// SHA-256 Hashing is done in 256bit/32byte encoding. By checking for the password, which IS known to be hashed, it should be 32 byte
 				// The MessageDigest should be 32 bytes, which when checking the byte size, matched up with the ISO-8859-1 character encoding.
 				// We checked the bytesize to check that the password is hashed.
