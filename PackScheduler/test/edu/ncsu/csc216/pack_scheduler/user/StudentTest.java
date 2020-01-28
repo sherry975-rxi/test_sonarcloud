@@ -20,14 +20,14 @@ public class StudentTest {
 
 	@Test
 	public void testStudentStringStringStringStringStringInt() {
-		
+
 		//Test valid constructor which calls super constructor
 		Student s1 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD);
 		assertEquals(s1.getFirstName(), FIRST_NAME);
 		assertEquals(s1.getMaxCredits(), 18);
-		
-		
-		
+
+
+
 		//Test invalid first name
 		Student s = null;
 		try {
@@ -47,7 +47,7 @@ public class StudentTest {
 	@Test
 	public void testSetEmail() {
 		Student s1 = null;
-		
+
 		//Test  invalid email
 		try {
 			s1 = new Student(FIRST_NAME, LAST_NAME, ID, null, PASSWORD);
@@ -56,7 +56,7 @@ public class StudentTest {
 			assertEquals(e.getMessage(), "Invalid email");
 			assertNull(s1);
 		}
-		
+
 		//Test for empty email
 		try {
 			s1 = new Student(FIRST_NAME, LAST_NAME, ID, "", PASSWORD);
@@ -65,7 +65,7 @@ public class StudentTest {
 			assertEquals(e.getMessage(), "Invalid email");
 			assertNull(s1);
 		}
-		
+
 		//Test for no "@"
 		try {
 			s1 = new Student(FIRST_NAME, LAST_NAME, ID, "invalid.email" , PASSWORD);
@@ -74,7 +74,7 @@ public class StudentTest {
 			assertEquals(e.getMessage(), "Invalid email");
 			assertNull(s1);
 		}
-		
+
 		//Test for no "."
 		try {
 			s1 = new Student(FIRST_NAME, LAST_NAME, ID, "invalid@email", PASSWORD);
@@ -83,7 +83,7 @@ public class StudentTest {
 			assertEquals(e.getMessage(), "Invalid email");
 			assertNull(s1);
 		}
-		
+
 		//Test if "." is before "@"
 		try {
 			s1 = new Student(FIRST_NAME, LAST_NAME, ID, "inva.lid@emailcom", PASSWORD);
@@ -92,7 +92,7 @@ public class StudentTest {
 			assertEquals(e.getMessage(), "Invalid email");
 			assertNull(s1);
 		}
-		
+
 	}
 
 	@Test
@@ -105,14 +105,57 @@ public class StudentTest {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Method to test setFirstName().
+	 */
 	@Test
 	public void testSetFirstName() {
-		fail("Not yet implemented");
+		Student s1 = null;
+
+		//Test  null first name
+		try {
+			s1 = new Student(null, LAST_NAME, ID, EMAIL, PASSWORD);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Invalid first name");
+			assertNull(s1);
+		}
+
+		//Test empty first name
+		try {
+			s1 = new Student("", LAST_NAME, ID, EMAIL, PASSWORD);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Invalid first name");
+			assertNull(s1);
+		}
 	}
 
+	
+	/**
+	 * Method to test setLastName().
+	 */
 	@Test
 	public void testSetLastName() {
-		fail("Not yet implemented");
+		Student s1 = null;
+
+		//Test  null last name
+		try {
+			s1 = new Student(FIRST_NAME, null, ID, EMAIL, PASSWORD);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Invalid last name");
+			assertNull(s1);
+		}
+
+		//Test empty last name
+		try {
+			s1 = new Student(FIRST_NAME, "", ID, EMAIL, PASSWORD);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "Invalid last name");
+			assertNull(s1);
+		}
 	}
 
 	@Test
