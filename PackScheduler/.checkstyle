@@ -4,7 +4,7 @@
   <local-check-config name="checkstyle configuration ncsu" location="/Users/chris/Desktop/development/eclipse-java/csc_checkstyle.xml" type="external" description="">
     <additional-data name="protect-config-file" value="false"/>
   </local-check-config>
-  <fileset name="all" enabled="true" check-config-name="Google Checks" local="false">
+  <fileset name="all" enabled="true" check-config-name="CheckStyle NCSU Configuration" local="false">
     <file-match-pattern match-pattern="." include-pattern="true"/>
   </fileset>
 </fileset-config>
