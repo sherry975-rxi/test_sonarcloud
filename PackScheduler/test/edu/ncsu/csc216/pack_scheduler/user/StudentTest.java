@@ -13,9 +13,23 @@ public class StudentTest {
 	private static final String PASSWORD = "password";
 	private static final int CREDITS = 4;
 
+	/**
+	 * Testing hashCode() method for Student
+	 */
 	@Test
 	public void testHashCode() {
-		fail("Not yet implemented");
+
+		//student 3 has different credits from students 1 and 2
+		Student s1 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD);
+		Student s2 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD);
+		Student s3 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, CREDITS);
+
+		//Test for the same hash code for the same values
+		assertEquals(s1.hashCode(), s2.hashCode());
+
+		assertNotEquals(s2.hashCode(),s3.hashCode());
+
+
 	}
 
 	@Test
@@ -131,7 +145,7 @@ public class StudentTest {
 		}
 	}
 
-	
+
 	/**
 	 * Method to test setLastName().
 	 */
@@ -158,9 +172,30 @@ public class StudentTest {
 		}
 	}
 
+	/**
+	 * Testing hashCode() method for Student
+	 */
 	@Test
 	public void testEqualsObject() {
-		fail("Not yet implemented");
+
+		//student 3 has different credits from students 1 and 2
+		Student s1 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD);
+		Student s2 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD);
+		Student s3 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, CREDITS);
+		Student s4 = new Student(FIRST_NAME, LAST_NAME, ID, "different@email.com", PASSWORD);
+		Student s5 = new Student("different", LAST_NAME, ID, EMAIL, PASSWORD);
+		Student s6 = new Student(FIRST_NAME, "different", ID, EMAIL, PASSWORD);
+		Student s7 = new Student(FIRST_NAME, LAST_NAME, "different", EMAIL, PASSWORD);
+		Student s8 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, "different");
+
+		assertTrue(s1.equals(s2));
+		assertFalse(s3.equals(s2));
+		assertFalse(s1.equals(s4));
+		assertFalse(s1.equals(s5));
+		assertFalse(s1.equals(s6));
+		assertFalse(s1.equals(s7));
+		assertFalse(s1.equals(s8));
+		
 	}
 
 	@Test
