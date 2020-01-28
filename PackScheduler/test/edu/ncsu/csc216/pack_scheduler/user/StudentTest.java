@@ -4,6 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * Tests the Student class and getter methods
+ * @author Christopher Wagner
+ *
+ */
 public class StudentTest {
 	// Valid Testing Variables
 	private static final String FIRST_NAME = "Chris";
@@ -30,7 +35,10 @@ public class StudentTest {
 		assertNotEquals(s2.hashCode(), s3.hashCode());
 
 	}
-
+	/**
+	 * Test both constructors for valid and invalid inputs
+	 * @throws IllegalArgumentException if student first name or id is null
+	 */
 	@Test
 	public void testStudentStringStringStringStringStringInt() {
 
@@ -64,11 +72,16 @@ public class StudentTest {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Tests invalid email
+	 * @throws IllegalArgumentException if email is null, empty, missing '@' symbol, missing '.', or if the last
+	 * occurence of the '.' character comes before the '@' character.
+	 */
 	@Test
 	public void testSetEmail() {
 		Student s1 = null;
 
-		// Test invalid email
+		// Test null email
 		try {
 			s1 = new Student(FIRST_NAME, LAST_NAME, ID, null, PASSWORD);
 			fail();
@@ -114,11 +127,14 @@ public class StudentTest {
 		}
 
 	}
-
+	/**
+	 * Test invalid password
+	 * @throws IllegalArgumentException if password is null or empty
+	 */
 	@Test
 	public void testSetPassword() {
 		Student s = null;
-
+		//test null password
 		try {
 			s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, null);
 			fail();
@@ -135,7 +151,10 @@ public class StudentTest {
 			assertNull(s);
 		}
 	}
-
+	/**
+	 * Test setting max credits
+	 * @throws IllegalArgumentException if credits are less than 3 or greater than 18
+	 */
 	@Test
 	public void testSetMaxCredits() {
 		Student s = null;
@@ -159,6 +178,7 @@ public class StudentTest {
 
 	/**
 	 * Method to test setFirstName().
+	 * @throws IllegalArgumentException if first name is null or empty
 	 */
 	@Test
 	public void testSetFirstName() {
@@ -185,6 +205,7 @@ public class StudentTest {
 
 	/**
 	 * Method to test setLastName().
+	 * @throws IllegalArgumentException if last name is null or empty
 	 */
 	@Test
 	public void testSetLastName() {
