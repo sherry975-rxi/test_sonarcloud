@@ -141,14 +141,24 @@ public class StudentRecordIOTest {
 	 */
 	@Test
 	public void testProcessStudent() {
-		ArrayList<Student> s1 = null;
+		ArrayList<Student> s1 =  new ArrayList<Student>();
 		try {
 			s1 = StudentRecordIO.readStudentRecords("test-files/student_without_credits.txt");
+			assertEquals(s1, new ArrayList<Student>());
 		} catch (FileNotFoundException e) {
-			assertEquals(s1, null);
+			fail("The file should've have been read.");
+		}
+		
+		try {
+			s1 = StudentRecordIO.readStudentRecords("test-files/incorrect_input_records.txt");
+			assertEquals(s1,  new ArrayList<Student>());
+		} catch (FileNotFoundException e) {
+			fail("The file should've have been read.");
 		}
 		
 		
 	}
+	
+	
 
 }
