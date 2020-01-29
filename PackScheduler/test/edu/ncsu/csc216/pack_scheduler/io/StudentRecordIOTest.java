@@ -39,8 +39,8 @@ public class StudentRecordIOTest {
 	private String hashPW;
 	private static final String HASH_ALGORITHM = "SHA-256";
 	
-	private static final String validTestFile = "test-files/student_records.txt";
-	private static final String invalidTestFile = "test-files/invalid_student_records.txt";
+	private static final String VALID_TEST_FILE = "test-files/student_records.txt";
+	private static final String INVALID_TEST_FILE = "test-files/invalid_student_records.txt";
 	
 	@Before
 	public void setUp() {
@@ -86,18 +86,18 @@ public class StudentRecordIOTest {
 	public void testReadStudentRecords() {
 		//Valid Record Test
 		try {
-			ArrayList<Student> students = StudentRecordIO.readStudentRecords(validTestFile);
+			ArrayList<Student> students = StudentRecordIO.readStudentRecords(VALID_TEST_FILE);
 			assertEquals(students.size(), validStudents.length);
 		} catch (FileNotFoundException e) {
-			fail("Couldn't read " + validTestFile);
+			fail("Couldn't read " + VALID_TEST_FILE);
 		}
 		
 		//Invalid Record Test
 		try {
-			ArrayList<Student> students = StudentRecordIO.readStudentRecords(invalidTestFile);
+			ArrayList<Student> students = StudentRecordIO.readStudentRecords(INVALID_TEST_FILE);
 			assertEquals(students.size(), 0);
 		} catch (FileNotFoundException e) {
-			fail("Couldn't read " + validTestFile);
+			fail("Couldn't read " + INVALID_TEST_FILE);
 		}
 		
 		
