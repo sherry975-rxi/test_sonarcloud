@@ -3,7 +3,6 @@ package edu.ncsu.csc216.pack_scheduler.directory;
 import static org.junit.Assert.*;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -13,7 +12,6 @@ import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ncsu.csc216.pack_scheduler.io.StudentRecordIO;
 
 /**
  * Tests StudentDirectory.
