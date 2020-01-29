@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 
 /**
@@ -17,7 +18,7 @@ import edu.ncsu.csc216.pack_scheduler.user.Student;
  * @author Brian Alonso
  * 
  */
-public class StudentRecordIO {
+public class StudentRecordIO  {
 
 	/**
 	 * Method for reading the records of all students from a desired file

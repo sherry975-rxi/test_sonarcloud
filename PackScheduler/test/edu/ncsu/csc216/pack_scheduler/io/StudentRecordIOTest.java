@@ -135,5 +135,20 @@ public class StudentRecordIOTest {
 	    }
 	    
 	}
+	
+	/**
+	 * Test processing a student without credits defined
+	 */
+	@Test
+	public void testProcessStudent() {
+		ArrayList<Student> s1 = null;
+		try {
+			s1 = StudentRecordIO.readStudentRecords("student_without_credits.txt");
+		} catch (FileNotFoundException e) {
+			assertEquals(s1, null);
+		}
+		
+		
+	}
 
 }
