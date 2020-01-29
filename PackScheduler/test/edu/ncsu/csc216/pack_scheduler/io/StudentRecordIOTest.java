@@ -11,6 +11,11 @@ import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Suite of test cases for StudentRecordIO
+ * @author Brian Alonso
+ *
+ */
 public class StudentRecordIOTest {
 
 	private String validStudent0 = "Zahir,King,zking,orci.Donec@ametmassaQuisque.com,pw,15";
