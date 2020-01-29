@@ -143,7 +143,7 @@ public class StudentRecordIOTest {
 	public void testProcessStudent() {
 		ArrayList<Student> s1 = null;
 		try {
-			s1 = StudentRecordIO.readStudentRecords("student_without_credits.txt");
+			s1 = StudentRecordIO.readStudentRecords("test-files/student_without_credits.txt");
 		} catch (FileNotFoundException e) {
 			assertEquals(s1, null);
 		}
