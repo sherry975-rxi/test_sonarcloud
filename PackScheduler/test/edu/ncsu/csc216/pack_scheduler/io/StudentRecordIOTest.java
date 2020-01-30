@@ -145,23 +145,14 @@ public class StudentRecordIOTest {
 	 */
 	@Test
 	public void testWriteStudentRecordsNoPermissions() {
-		String invalidDirectory = "non-existing-folder/actual_student_records.txt";
 	    ArrayList<Student> students = new ArrayList<Student>();
 	    students.add(new Student("Zahir", "King", "zking", "orci.Donec@ametmassaQuisque.com", hashPW, 15));
 	    //Assumption that you are using a hash of "pw" stored in hashPW
 	    try {
-<<<<<<< HEAD
-	        StudentRecordIO.writeStudentRecords("/home/sesmith5/actual_student_records.txt", students);
-=======
-	    	StudentRecordIO.writeStudentRecords(invalidDirectory, students);
->>>>>>> branch 'master' of https://github.ncsu.edu/engr-csc216-spring2020/csc216-211-L-8.git
+	        StudentRecordIO.writeStudentRecords("C:/Program Files/actual_student_records.txt", students);
 	        fail("Attempted to write to a directory location that doesn't exist or without the appropriate permissions and the write happened.");
 	    } catch (IOException e) {
-<<<<<<< HEAD
-	        assertEquals("/home/sesmith5/actual_student_records.txt (Permission denied)", e.getMessage());
-=======
-	    	assertEquals("Counldn't write to " + invalidDirectory, e.getMessage());
->>>>>>> branch 'master' of https://github.ncsu.edu/engr-csc216-spring2020/csc216-211-L-8.git
+	        assertEquals("C:\\Program Files\\actual_student_records.txt (Access is denied)", e.getMessage());
 	        //The actual error message on Jenkins!
 	    }
 	    
