@@ -66,7 +66,9 @@ public class StudentTest {
 		}
 
 	}
-
+	/**
+	 * Test student constructor
+	 */
 	@Test
 	public void testStudentStringStringStringStringString() {
 		fail("Not yet implemented");
@@ -255,7 +257,9 @@ public class StudentTest {
 		assertFalse(s1.equals(s8));
 
 	}
-
+	/**
+	 * test toString method
+	 */
 	@Test
 	public void testToString() {
 		fail("Not yet implemented");
