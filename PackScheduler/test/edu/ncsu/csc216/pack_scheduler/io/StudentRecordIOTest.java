@@ -153,7 +153,7 @@ public class StudentRecordIOTest {
 	    	StudentRecordIO.writeStudentRecords(invalidDirectory, students);
 	        fail("Attempted to write to a directory location that doesn't exist or without the appropriate permissions and the write happened.");
 	    } catch (IOException e) {
-	    	assertEquals("Counldn't write to " + invalidDirectory, e.getMessage());
+	    	assertEquals(invalidDirectory + " (No such file or directory)", e.getMessage());
 	        //The actual error message on Jenkins!
 	    }
 	    
