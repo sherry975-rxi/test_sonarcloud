@@ -16,6 +16,7 @@ import org.junit.Test;
 /**
  * Tests StudentDirectory.
  * @author Sarah Heckman
+ * @author Brian Alonso
  */
 public class StudentDirectoryTest {
 
@@ -96,7 +97,7 @@ public class StudentDirectoryTest {
 			sd.loadStudentsFromFile("invlid file");
 			fail();
 		} catch (IllegalArgumentException e) {
-			assertEquals(e.getMessage(), "Unable to read file invalid file");
+			assertEquals(e.getMessage(), "Unable to read file invlid file");
 		}
 
 	}
@@ -115,6 +116,19 @@ public class StudentDirectoryTest {
 		assertEquals(FIRST_NAME, studentDirectory[0][0]);
 		assertEquals(LAST_NAME, studentDirectory[0][1]);
 		assertEquals(ID, studentDirectory[0][2]);
+
+		try {
+			sd.addStudent(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, "", MAX_CREDITS);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertEquals(1, studentDirectory.length);
+			assertEquals(FIRST_NAME, studentDirectory[0][0]);
+			assertEquals(LAST_NAME, studentDirectory[0][1]);
+			assertEquals(ID, studentDirectory[0][2]);
+			assertEquals("Invalid password", e.getMessage());
+		}
+
+
 	}
 
 	/**

@@ -66,13 +66,6 @@ public class StudentTest {
 		}
 
 	}
-	/**
-	 * Test student constructor
-	 */
-	@Test
-	public void testStudentStringStringStringStringString() {
-		fail("Not yet implemented");
-	}
 
 	/**
 	 * Tests invalid email
@@ -169,7 +162,7 @@ public class StudentTest {
 			assertNull(s);
 		}
 		try {
-			s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, 18);
+			s = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, 19);
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertEquals(e.getMessage(), "Invalid max credits");
@@ -257,12 +250,15 @@ public class StudentTest {
 		assertFalse(s1.equals(s8));
 
 	}
+	
 	/**
 	 * test toString method
 	 */
 	@Test
 	public void testToString() {
-		fail("Not yet implemented");
+		Student s1 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD);
+		String s1String = s1.toString();
+		assertEquals("Chris,Wagner,cwwagne2,cwwagne2@ncsu.edu,password,18", s1String);
 	}
 
 }
