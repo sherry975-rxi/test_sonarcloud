@@ -33,6 +33,8 @@ public class StudentDirectoryTest {
 	private static final String PASSWORD = "pw";
 	/** Test max credits */
 	private static final int MAX_CREDITS = 15;
+	/** Invalid File name */
+	private static final String INVALID_FILE_NAME = null;
 
 	/**
 	 * Resets course_records.txt for use in other tests.
@@ -148,10 +150,10 @@ public class StudentDirectoryTest {
 
 		//Test invalid file
 		try {
-			sd.saveStudentDirectory("invlid file");
+			sd.saveStudentDirectory(INVALID_FILE_NAME);
 			fail();
 		} catch (IllegalArgumentException e) {
-			assertEquals(e.getMessage(), "Unable to write to file invalid file");
+			assertEquals(e.getMessage(), "Unable to write to file " + INVALID_FILE_NAME);
 		}
 
 	}

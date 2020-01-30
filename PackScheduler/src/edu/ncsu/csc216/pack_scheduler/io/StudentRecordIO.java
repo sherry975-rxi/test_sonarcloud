@@ -55,7 +55,7 @@ public class StudentRecordIO  {
 		}
 		output.close();
 		
-		} catch (IOException e) {
+		} catch (IOException | NullPointerException n) {
 			throw new IOException(fileName + " (Permission denied)");
 		}
 
