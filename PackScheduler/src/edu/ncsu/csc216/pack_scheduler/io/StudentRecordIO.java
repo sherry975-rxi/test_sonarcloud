@@ -48,13 +48,16 @@ public class StudentRecordIO  {
 	 * @throws IOException thrown if unable to write to the fileName
 	 */
 	public static void writeStudentRecords(String fileName, ArrayList<Student> studentDirectory) throws IOException {
+		try {
 		PrintStream output = new PrintStream(new File (fileName));
-
 		for (int i = 0; i < studentDirectory.size(); i++) {
 			output.println(studentDirectory.get(i).toString());
 		}
-
 		output.close();
+		
+		} catch (IOException e) {
+			throw new IOException(fileName + " (Permission denied)");
+		}
 
 	}
 

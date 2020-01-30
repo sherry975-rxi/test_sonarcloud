@@ -149,10 +149,10 @@ public class StudentRecordIOTest {
 	    students.add(new Student("Zahir", "King", "zking", "orci.Donec@ametmassaQuisque.com", hashPW, 15));
 	    //Assumption that you are using a hash of "pw" stored in hashPW
 	    try {
-	        StudentRecordIO.writeStudentRecords("C:/Program Files/actual_student_records.txt", students);
+	        StudentRecordIO.writeStudentRecords("/home/sesmith5/actual_student_records.txt", students);
 	        fail("Attempted to write to a directory location that doesn't exist or without the appropriate permissions and the write happened.");
 	    } catch (IOException e) {
-	        assertEquals("C:\\Program Files\\actual_student_records.txt (Access is denied)", e.getMessage());
+	        assertEquals("/home/sesmith5/actual_student_records.txt (Permission denied)", e.getMessage());
 	        //The actual error message on Jenkins!
 	    }
 	    
