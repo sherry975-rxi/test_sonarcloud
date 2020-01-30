@@ -101,7 +101,9 @@ public class StudentRecordIO  {
 					}
 				} else {
 					try {
-						student = new Student(first, last, id, email, password);
+						if(!in.hasNext()) {  //Should run if there is nothing in the credits thing, if there is no integer next
+							student = new Student(first, last, id, email, password);
+						} //else, it would skip it when adding to arraylist
 					}
 					catch (IllegalArgumentException e) {
 						//Since the student's data does't make sense, a Null will be returned instead
