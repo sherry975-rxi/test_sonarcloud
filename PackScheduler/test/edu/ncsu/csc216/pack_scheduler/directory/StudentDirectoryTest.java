@@ -12,11 +12,9 @@ import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
 
-
 /**
  * Tests StudentDirectory.
  * @author Sarah Heckman
- * @author Brian Alonso
  */
 public class StudentDirectoryTest {
 
@@ -55,7 +53,7 @@ public class StudentDirectoryTest {
 	}
 
 	/**
-	 * Tests StudentDirectory() that does not contain any students.
+	 * Tests StudentDirectory().
 	 */
 	@Test
 	public void testStudentDirectory() {
@@ -66,7 +64,7 @@ public class StudentDirectoryTest {
 	}
 
 	/**
-	 * Tests StudentDirectory.testNewStudentDirectory() by a valid input file and by no input file.
+	 * Tests StudentDirectory.testNewStudentDirectory().
 	 */
 	@Test
 	public void testNewStudentDirectory() {
@@ -82,7 +80,7 @@ public class StudentDirectoryTest {
 	}
 
 	/**
-	 * Tests StudentDirectory.loadStudentsFromFile() with a valid test tile as well as an invalid test file.
+	 * Tests StudentDirectory.loadStudentsFromFile().
 	 */
 	@Test
 	public void testLoadStudentsFromFile() {
@@ -94,17 +92,16 @@ public class StudentDirectoryTest {
 
 		//Test invalid file
 		try {
-			sd.loadStudentsFromFile("invlid file");
+			sd.loadStudentsFromFile("invalid file");
 			fail();
 		} catch (IllegalArgumentException e) {
-			assertEquals(e.getMessage(), "Unable to read file invlid file");
+			assertEquals(e.getMessage(), "Unable to read file invalid file");
 		}
 
 	}
 
 	/**
-	 * Tests StudentDirectory.addStudent() testing addStudent() by adding a valid student and then adding an invalid student with an
-	 * empty password.
+	 * Tests StudentDirectory.addStudent().
 	 */
 	@Test
 	public void testAddStudent() {
@@ -117,23 +114,10 @@ public class StudentDirectoryTest {
 		assertEquals(FIRST_NAME, studentDirectory[0][0]);
 		assertEquals(LAST_NAME, studentDirectory[0][1]);
 		assertEquals(ID, studentDirectory[0][2]);
-
-		try {
-			sd.addStudent(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD, "", MAX_CREDITS);
-			fail();
-		} catch (IllegalArgumentException e) {
-			assertEquals(1, studentDirectory.length);
-			assertEquals(FIRST_NAME, studentDirectory[0][0]);
-			assertEquals(LAST_NAME, studentDirectory[0][1]);
-			assertEquals(ID, studentDirectory[0][2]);
-			assertEquals("Invalid password", e.getMessage());
-		}
-
-
 	}
 
 	/**
-	 * Tests StudentDirectory.removeStudent() by adding students in a valid test file and removing them.
+	 * Tests StudentDirectory.removeStudent().
 	 */
 	@Test
 	public void testRemoveStudent() {
@@ -151,7 +135,7 @@ public class StudentDirectoryTest {
 	}
 
 	/**
-	 * Tests StudentDirectory.saveStudentDirectory() by calling the method and comparing it to an expected student records file.
+	 * Tests StudentDirectory.saveStudentDirectory().
 	 */
 	@Test
 	public void testSaveStudentDirectory() {
