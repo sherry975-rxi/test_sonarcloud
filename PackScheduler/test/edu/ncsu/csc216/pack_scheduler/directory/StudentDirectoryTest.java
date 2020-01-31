@@ -55,7 +55,7 @@ public class StudentDirectoryTest {
 	}
 
 	/**
-	 * Tests StudentDirectory().
+	 * Tests StudentDirectory() that does not contain any students.
 	 */
 	@Test
 	public void testStudentDirectory() {
@@ -66,7 +66,7 @@ public class StudentDirectoryTest {
 	}
 
 	/**
-	 * Tests StudentDirectory.testNewStudentDirectory().
+	 * Tests StudentDirectory.testNewStudentDirectory() by a valid input file and by no input file.
 	 */
 	@Test
 	public void testNewStudentDirectory() {
@@ -82,7 +82,7 @@ public class StudentDirectoryTest {
 	}
 
 	/**
-	 * Tests StudentDirectory.loadStudentsFromFile().
+	 * Tests StudentDirectory.loadStudentsFromFile() with a valid test tile as well as an invalid test file.
 	 */
 	@Test
 	public void testLoadStudentsFromFile() {
@@ -103,7 +103,8 @@ public class StudentDirectoryTest {
 	}
 
 	/**
-	 * Tests StudentDirectory.addStudent().
+	 * Tests StudentDirectory.addStudent() testing addStudent() by adding a valid student and then adding an invalid student with an
+	 * empty password.
 	 */
 	@Test
 	public void testAddStudent() {
@@ -132,7 +133,7 @@ public class StudentDirectoryTest {
 	}
 
 	/**
-	 * Tests StudentDirectory.removeStudent().
+	 * Tests StudentDirectory.removeStudent() by adding students in a valid test file and removing them.
 	 */
 	@Test
 	public void testRemoveStudent() {
@@ -150,7 +151,7 @@ public class StudentDirectoryTest {
 	}
 
 	/**
-	 * Tests StudentDirectory.saveStudentDirectory().
+	 * Tests StudentDirectory.saveStudentDirectory() by calling the method and comparing it to an expected student records file.
 	 */
 	@Test
 	public void testSaveStudentDirectory() {
