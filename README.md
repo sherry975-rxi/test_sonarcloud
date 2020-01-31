@@ -14,9 +14,10 @@ Generate Javadoc upon completion    Brian                 1/26/2020
 Project Delivered for Grading       N/A                   1/28/2020
 Create StudentTest Class            Chris                 1/28/2020
 Implement StudentTest Methods       Chris/Brian/Jack      1/28/2020
-Write Test for StudentRecordIO
-Write Test for Student Directory
-Complete BlackBox Test Plan
-Fix any outstanding bugs            Jack/Brian/Chris
-Complete Final Javadoc
+Write Test for StudentRecordIO      Chris/Brian/Jack      02/02/2020
+Write Test for Student Directory    Chris/Brian/Jack      02/02/2020
+Complete BlackBox Test Plan         Brian                 1/30/2020
+Fix any outstanding bugs            Jack/Brian/Chris      02/02/2020
+Update README file                  Chris                 1/30/2020
+Complete Final Javadoc              Brian                 02/02/2020
 
