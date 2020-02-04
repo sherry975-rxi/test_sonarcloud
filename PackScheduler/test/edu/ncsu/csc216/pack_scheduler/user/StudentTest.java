@@ -260,5 +260,62 @@ public class StudentTest {
 		String s1String = s1.toString();
 		assertEquals("Chris,Wagner,cwwagne2,cwwagne2@ncsu.edu,password,18", s1String);
 	}
+	
+	/**
+	 * 
+	 */
+	@Test
+	public void testCompareTo() {
+		Student s1 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD);
+		Student s2 = new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD);
+		
+		int x = s1.compareTo(s2);
+		int y = s2.compareTo(s1);
+		
+		assertEquals(x, 0); //should be the same
+		assertEquals(y, 0); //should be the same
+		
+		try {
+			Student s3 = null;
+			s1.compareTo(s3);
+			fail();
+		} catch (NullPointerException e) {
+			assertTrue(s1.equals(new Student(FIRST_NAME, LAST_NAME, ID, EMAIL, PASSWORD))); //making sure it doesnt change
+		}
+		
+		s2.setLastName("Smith"); //changing the last name of student 2
+		
+		int z = s1.compareTo(s2); //should be -1
+		
+		int a = s2.compareTo(s1); //should be 1
+		
+		assertEquals(-1,z);
+		assertEquals(1,a);
+		
+		//setting s2 to have the same last name as s1, but changing the first name of s2
+		s2.setLastName(LAST_NAME); //changing the last name of student 2
+		s2.setFirstName("Brian");
+		
+		int b = s1.compareTo(s2); //should be -1
+		
+		int c = s2.compareTo(s1); //should be 1
+		
+		assertEquals(-1,b);
+		assertEquals(1,c);
+		
+		//setting s4 to have the same names as s1 but have different unity ids
+		Student s4 = new Student(FIRST_NAME, LAST_NAME, "bealonso", EMAIL, PASSWORD);
+		
+		int d = s1.compareTo(s4); //should be -1
+		
+		int e = s4.compareTo(s1); //should be 1
+		
+		assertEquals(-1,d);
+		assertEquals(1,e);
+		
+		
+		
+		
+	}
 
 }

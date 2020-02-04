@@ -6,10 +6,11 @@ package edu.ncsu.csc216.pack_scheduler.user;
  * password, and the maxCredits the student can have is stored in each instance.
  * @author Christopher Wagner
  * @author Jack Lanois
+ * @author Brian Alonso
  */
 
-public class Student {
-	
+public class Student implements Comparable<Student> {
+
 	private String firstName;
 	private String lastName;
 	private String id;
@@ -37,10 +38,10 @@ public class Student {
 		setEmail(email);
 		setPassword(password);
 		setMaxCredits(maxCredits);
-	
+
 
 	}
-	
+
 	/**
 	 * Creates a Student object using their firstName, lastName, email, password, with maxCredits being set
 	 * to the MAX_CREDITS variable, which is 18 by default.
@@ -54,7 +55,7 @@ public class Student {
 	public Student(String firstName, String lastName, String id, String email, String password) {
 		this(firstName, lastName, id, email, password, MAX_CREDITS);
 	}
-	
+
 	/**
 	 * Returns the Student's email.
 	 * @return the email
@@ -92,7 +93,7 @@ public class Student {
 	public String getPassword() {
 		return password;
 	}
-	
+
 	/**
 	 * Set the Student's password.
 	 * @param password the password to set
@@ -101,7 +102,7 @@ public class Student {
 	public void setPassword(String password) {
 		if(password == null || password.isEmpty()) {
 			throw new IllegalArgumentException("Invalid password");
-			}
+		}
 		this.password = password;
 	}
 
@@ -123,7 +124,7 @@ public class Student {
 	public void setMaxCredits(int maxCredits) {
 		if(maxCredits < 3 || maxCredits > MAX_CREDITS) { //MAX_CREDITS should be 18 so it should throw if <3 and >18
 			throw new IllegalArgumentException("Invalid max credits");
-			}
+		}
 		this.maxCredits = maxCredits;
 	}
 
@@ -134,7 +135,7 @@ public class Student {
 	public String getFirstName() {
 		return firstName;
 	}
-	
+
 	/**
 	 * Set the Student's first name.
 	 * @param firstName the firstName to set
@@ -143,7 +144,7 @@ public class Student {
 	public void setFirstName(String firstName) {
 		if(firstName == null || firstName.isEmpty()) {
 			throw new IllegalArgumentException("Invalid first name");
-			}
+		}
 		this.firstName = firstName;
 	}
 
@@ -163,7 +164,7 @@ public class Student {
 	public void setLastName(String lastName) {
 		if(lastName == null || lastName.isEmpty()) {
 			throw new IllegalArgumentException("Invalid last name");
-			}
+		}
 		this.lastName = lastName;
 	}
 
@@ -174,7 +175,7 @@ public class Student {
 	public String getId() {
 		return id;
 	}
-	
+
 	/**
 	 * Set the Student's id.
 	 * @param id the id to set
@@ -183,7 +184,7 @@ public class Student {
 	private void setId(String id) {
 		if(id == null || id.isEmpty()) {
 			throw new IllegalArgumentException("Invalid id");
-			}
+		}
 		this.id = id;
 	}
 
@@ -247,7 +248,7 @@ public class Student {
 			return false;
 		return true;
 	}
-	
+
 	/**
 	 * Returns a comma separated value String of all Course fields.
 	 * @return String representation of Student
@@ -256,6 +257,53 @@ public class Student {
 	public String toString() {
 		return "" + this.getFirstName() + "," + this.getLastName() + "," + id + "," + 
 				this.getEmail() + "," + this.getPassword() + "," + this.getMaxCredits();
+	}
+
+
+	/**
+	 * This method compares two students, first by last name, then by first name, then by unity ID.
+	 * If the input student is less than this, then the value returned is -1. 
+	 * If the input student is greater than this, then the value returned is 1.
+	 * Otherwise the two students are equal and 0 is returned.
+	 */
+	@Override
+	public int compareTo(Student o) {
+		
+		Student s2 = o;
+
+		String l1 = getLastName();
+		String l2 = s2.getLastName();
+
+		String f1 = getFirstName();
+		String f2 = s2.getFirstName();
+
+		String u1 = getId();
+		String u2 = s2.getId();
+
+		if (l1.compareTo(l2) == 0) {
+			if (f1.compareTo(f2) == 0) {
+				if (u2.compareTo(u1) < 0) {
+					return -1;
+				} else if (u2.compareTo(u1) > 0) {
+					return 1;
+				} else {
+					return 0;
+				}
+			} else {
+				if (f2.compareTo(f1) < 0) {
+					return -1;
+				} else if (f2.compareTo(f1) > 0) {
+					return 1;
+				}
+			}
+		} else {
+			if (l2.compareTo(l1) < 0) {
+				return -1;
+			} else if (l2.compareTo(l1) > 0) {
+				return 1;
+			}
+		}
+		return 0;
 	}
 
 }
