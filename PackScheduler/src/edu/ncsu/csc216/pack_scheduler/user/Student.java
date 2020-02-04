@@ -282,25 +282,25 @@ public class Student implements Comparable<Student> {
 
 		if (l1.compareTo(l2) == 0) {
 			if (f1.compareTo(f2) == 0) {
-				if (u2.compareTo(u1) < 0) {
-					return 1;
-				} else if (u2.compareTo(u1) > 0) {
+				if (u1.compareTo(u2) < 0) {
 					return -1;
+				} else if (u1.compareTo(u2) > 0) {
+					return 1;
 				} else {
 					return 0;
 				}
 			} else {
-				if (f2.compareTo(f1) < 0) {
-					return 1;
-				} else if (f2.compareTo(f1) > 0) {
+				if (f1.compareTo(f2) < 0) {
 					return -1;
+				} else if (f1.compareTo(f2) > 0) {
+					return 1;
 				}
 			}
 		} else {
-			if (l2.compareTo(l1) < 0) {
-				return 1;
-			} else if (l2.compareTo(l1) > 0) {
+			if (l1.compareTo(l2) < 0) {
 				return -1;
+			} else if (l1.compareTo(l2) > 0) {
+				return 1;
 			}
 		}
 		return 0;

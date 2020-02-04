@@ -291,8 +291,8 @@ public class StudentTest {
 		
 		int a = s2.compareTo(s1); //should be 1
 		
-		assertEquals(-1, z);
-		assertEquals(1, a);
+		assertEquals(1, z);
+		assertEquals(-1, a);
 		
 		//setting s2 to have the same last name as s1, but changing the first name of s2
 		s2.setLastName(LAST_NAME); //changing the last name of student 2
@@ -302,8 +302,8 @@ public class StudentTest {
 		
 		int c = s2.compareTo(s1); //should be 1
 		
-		assertEquals(-1, b);
-		assertEquals(1, c);
+		assertEquals(1, b);
+		assertEquals(-1, c);
 		
 		//setting s4 to have the same names as s1 but have different unity ids
 		Student s4 = new Student(FIRST_NAME, LAST_NAME, "bealonso", EMAIL, PASSWORD);
@@ -312,8 +312,8 @@ public class StudentTest {
 		
 		int e = s4.compareTo(s1); //should be 1
 		
-		assertEquals(-1, d);
-		assertEquals(1, e);
+		assertEquals(1, d);
+		assertEquals(-1, e);
 		
 		
 		
