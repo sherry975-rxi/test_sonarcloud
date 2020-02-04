@@ -8,5 +8,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib/CSC216Collections.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
