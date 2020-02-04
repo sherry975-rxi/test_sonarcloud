@@ -22,8 +22,8 @@ public class SortedListTest {
 		assertEquals(0, list.size());
 		assertFalse(list.contains("apple"));
 
-		// TODO Test that the list grows by adding at least 11 elements
-		// Remember the list's initial capacity is 10
+		// Test that the list grows by adding at least 11 elements
+		//Note: initial capacity is 10 elements
 		list.add("banana");
 		list.add("orange");
 		list.add("grape");
@@ -51,7 +51,7 @@ public class SortedListTest {
 		assertEquals(1, list.size());
 		assertEquals("banana", list.get(0));
 
-		// TODO Test adding to the front, middle and back of the list
+		// Test adding to the front, middle and back of the list
 		list.add("apple");
 		list.add("apricot");
 		list.add("cantalope");
@@ -60,7 +60,7 @@ public class SortedListTest {
 		assertEquals("banana", list.get(2));
 		assertEquals("cantalope", list.get(3));
 
-		// TODO Test adding a null element
+		// Test adding a null element
 		try {
 			list.add(null);
 			fail("Should not have added a null element");
@@ -71,7 +71,7 @@ public class SortedListTest {
 			assertEquals("cantalope", list.get(3));
 		}
 
-		// TODO Test adding a duplicate element
+		// Test adding a duplicate element
 		try{
 			list.add("banana");
 		} catch (IllegalArgumentException e) {
@@ -95,19 +95,19 @@ public class SortedListTest {
 		// here. Instead this test method should focus on the error
 		// and boundary cases.
 
-		// TODO Test getting an element from an empty list
+		// Test getting an element from an empty list
 		try {
 			list.get(0);
 		} catch (IndexOutOfBoundsException e) {
 			assertEquals(0, list.size());
 		}
 		
-		// TODO Add some elements to the list
+		// Add some elements to the list
 		list.add("apple");
 		list.add("banana");
 		list.add("grapefruit");
 		list.add("apricot");
-		// TODO Test getting an element at an index < 0
+		// Test getting an element at an index < 0
 		try {
 			list.get(list.size() - 5);
 		} catch (IndexOutOfBoundsException e ) {
@@ -116,7 +116,7 @@ public class SortedListTest {
 			assertEquals("banana", list.get(2));
 			assertEquals("grapefruit", list.get(3));
 		}
-		// TODO Test getting an element at size
+		// Test getting an element at size
 		try {
 			list.get(list.size());
 		} catch (IndexOutOfBoundsException e) {
@@ -136,18 +136,18 @@ public class SortedListTest {
 	public void testRemove() {
 		SortedList<String> list = new SortedList<String>();
 
-		// TODO Test removing from an empty list
+		// Test removing from an empty list
 		try {
 			list.remove(0);
 		} catch (IndexOutOfBoundsException e) {
 			assertEquals(0, list.size());
 		}
-		// TODO Add some elements to the list - at least 4
+		// Add some elements to the list - at least 4
 		list.add("apple");
 		list.add("banana");
 		list.add("grapefruit");
 		list.add("apricot");
-		// TODO Test removing an element at an index < 0
+		// Test removing an element at an index < 0
 		try {
 			list.remove(list.size() - 5);
 		} catch (IndexOutOfBoundsException e) {
@@ -156,7 +156,7 @@ public class SortedListTest {
 			assertEquals("banana", list.get(2));
 			assertEquals("grapefruit", list.get(3));
 		}
-		// TODO Test removing an element at size
+		//  Test removing an element at size
 		try {
 			list.remove(list.size());
 		} catch (IndexOutOfBoundsException e) {
@@ -165,19 +165,19 @@ public class SortedListTest {
 			assertEquals("banana", list.get(2));
 			assertEquals("grapefruit", list.get(3));
 		}
-		// TODO Test removing a middle element
+		//  Test removing a middle element
 		list.remove(2);
 		assertEquals("apple", list.get(0));
 		assertEquals("apricot", list.get(1));
 		assertEquals("grapefruit", list.get(2));
-		// TODO Test removing the last element
+		//  Test removing the last element
 		list.remove(2);
 		assertEquals("apple", list.get(0));
 		assertEquals("apricot", list.get(1));
-		// TODO Test removing the first element
+		//  Test removing the first element
 		list.remove(0);
 		assertEquals("apricot", list.get(0));
-		// TODO Test removing the last element
+		//  Test removing the last element
 		list.remove(0);
 		assertEquals(0, list.size());
 	}
@@ -190,18 +190,18 @@ public class SortedListTest {
 	public void testIndexOf() {
 		SortedList<String> list = new SortedList<String>();
 
-		// TODO Test indexOf on an empty list
+		//  Test indexOf on an empty list
 		try {
 			list.indexOf("banana");
 		} catch (IndexOutOfBoundsException e) {
 			assertEquals (0, list.size());
 		}
-		// TODO Add some elements
+		//  Add some elements
 		list.add("apple");
 		list.add("banana");
 		list.add("grapefruit");
 		list.add("apricot");
-		// TODO Test various calls to indexOf for elements in the list
+		//  Test various calls to indexOf for elements in the list
 		// and not in the list
 		int index = list.indexOf("apple");
 		assertEquals(0, index);
@@ -210,7 +210,7 @@ public class SortedListTest {
 		} catch	(NullPointerException e) {
 			assertEquals(0, index);
 		}
-		// TODO Test checking the index of null
+		//  Test checking the index of null
 		try {
 			index = list.indexOf(null);
 		} catch (NullPointerException e) {
@@ -225,14 +225,14 @@ public class SortedListTest {
 	public void testClear() {
 		SortedList<String> list = new SortedList<String>();
 
-		// TODO Add some elements
+		//  Add some elements
 		list.add("apple");
 		list.add("banana");
 		list.add("grapefruit");
 		list.add("apricot");
-		// TODO Clear the list
+		//  Clear the list
 		list.clear();
-		// TODO Test that the list is empty
+		//  Test that the list is empty
 		assertEquals(0, list.size());
 	}
 
@@ -243,14 +243,14 @@ public class SortedListTest {
 	public void testIsEmpty() {
 		SortedList<String> list = new SortedList<String>();
 
-		// TODO Test that the list starts empty
+		//  Test that the list starts empty
 		assertTrue(list.isEmpty());
-		// TODO Add at least one element
+		//  Add at least one element
 		list.add("apple");
 		list.add("banana");
 		list.add("grapefruit");
 		list.add("apricot");
-		// TODO Check that the list is no longer empty
+		//  Check that the list is no longer empty
 		assertFalse(list.isEmpty());
 	}
 
@@ -262,14 +262,14 @@ public class SortedListTest {
 	public void testContains() {
 		SortedList<String> list = new SortedList<String>();
 
-		// TODO Test the empty list case
+		//  Test the empty list case
 		assertFalse(list.contains("apple"));
-		// TODO Add some elements
+		//  Add some elements
 		list.add("apple");
 		list.add("banana");
 		list.add("grapefruit");
 		list.add("apricot");
-		// TODO Test some true and false cases
+		//  Test some true and false cases
 		assertTrue(list.contains("apple"));
 		assertTrue(list.contains("grapefruit"));
 		assertFalse(list.contains("peanut"));
@@ -277,7 +277,8 @@ public class SortedListTest {
 	}
 
 	/**
-	 * Test if two list are equivalent or different.
+	 * Test if two list are equivalent or different based on the elements and position of the
+	 * elements in the list.
 	 */
 	@Test
 	public void testEquals() {
@@ -285,7 +286,7 @@ public class SortedListTest {
 		SortedList<String> list2 = new SortedList<String>();
 		SortedList<String> list3 = new SortedList<String>();
 
-		// TODO Make two lists the same and one list different
+		//  Make two lists the same and one list different
 		list1.add("apple");
 		list1.add("banana");
 		list1.add("grapefruit");
@@ -300,7 +301,7 @@ public class SortedListTest {
 		list3.add("raspberry");
 		list3.add("kiwi");
 		list3.add("pineapple");
-		// TODO Test for equality and non-equality
+		//  Test for equality and non-equality
 		assertTrue(list1.equals(list2));
 		assertFalse(list1.equals(list3));
 		assertFalse(list2.equals(list3));
@@ -315,7 +316,7 @@ public class SortedListTest {
 		SortedList<String> list2 = new SortedList<String>();
 		SortedList<String> list3 = new SortedList<String>();
 
-		// TODO Make two lists the same and one list different
+		//  Make two lists the same and one list different
 		list1.add("apple");
 		list1.add("banana");
 		list1.add("grapefruit");
@@ -330,7 +331,7 @@ public class SortedListTest {
 		list3.add("raspberry");
 		list3.add("kiwi");
 		list3.add("pineapple");
-		// TODO Test for the same and different hashCodes
+		//  Test for the same and different hashCodes
 		assertTrue(list1.hashCode() == list2.hashCode());
 		assertTrue(list2.hashCode() == list1.hashCode());
 		assertFalse(list1.hashCode() == list3.hashCode());
