@@ -7,12 +7,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.ncsu.csc216.collections.list.SortedList;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 
 /**
@@ -49,7 +49,7 @@ public class StudentRecordIOTest {
 	private static final String INVALID_TEST_FILE = "test-files/invalid_student_records.txt";
 	
 	/**
-	 * Resets the validStudents ArrayList for use in tests
+	 * Resets the validStudents SortedList for use in tests
 	 */
 	@Before
 	public void setUp() {
@@ -106,7 +106,7 @@ public class StudentRecordIOTest {
 	public void testReadStudentRecords() {
 		//Valid Record Test
 		try {
-			ArrayList<Student> students = StudentRecordIO.readStudentRecords(VALID_TEST_FILE);
+			SortedList<Student> students = StudentRecordIO.readStudentRecords(VALID_TEST_FILE);
 			assertEquals(students.size(), validStudents.length);
 		} catch (FileNotFoundException e) {
 			fail("Couldn't read " + VALID_TEST_FILE);
@@ -114,7 +114,7 @@ public class StudentRecordIOTest {
 		
 		//Invalid Record Test
 		try {
-			ArrayList<Student> students = StudentRecordIO.readStudentRecords(INVALID_TEST_FILE);
+			SortedList<Student> students = StudentRecordIO.readStudentRecords(INVALID_TEST_FILE);
 			assertEquals(0, students.size());
 		} catch (FileNotFoundException e) {
 			fail("Couldn't read " + INVALID_TEST_FILE);
@@ -129,7 +129,7 @@ public class StudentRecordIOTest {
 	 */
 	@Test
 	public void testWriteStudentRecords() {
-		ArrayList<Student> students = new ArrayList<Student>();
+		SortedList<Student> students = new SortedList<Student>();
 		students.add(new Student("Zahir", "King", "zking", "orci.Donec@ametmassaQuisque.com", hashPW, 15));
 		try {
 			StudentRecordIO.writeStudentRecords("test-files/actual_student_records.txt", students);
@@ -145,7 +145,7 @@ public class StudentRecordIOTest {
 	 */
 	@Test
 	public void testWriteStudentRecordsNoPermissions() {
-	    ArrayList<Student> students = new ArrayList<Student>();
+		SortedList<Student> students = new SortedList<Student>();
 	    students.add(new Student("Zahir", "King", "zking", "orci.Donec@ametmassaQuisque.com", hashPW, 15));
 	    //Assumption that you are using a hash of "pw" stored in hashPW
 	    try {
@@ -165,11 +165,11 @@ public class StudentRecordIOTest {
 	 */
 	@Test
 	public void testProcessStudent() {
-		ArrayList<Student> s1 =  new ArrayList<Student>();
+		SortedList<Student> s1 =  new SortedList<Student>();
 		
 		try {
 			s1 = StudentRecordIO.readStudentRecords("test-files/incorrect_input_records.txt");
-			assertEquals(new ArrayList<Student>(), s1);
+			assertEquals(new SortedList<Student>(), s1);
 		} catch (FileNotFoundException e) {
 			fail("The file should've have been read.");
 		}

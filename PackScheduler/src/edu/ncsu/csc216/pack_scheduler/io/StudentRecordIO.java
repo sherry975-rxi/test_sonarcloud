@@ -6,11 +6,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-
+import edu.ncsu.csc216.collections.list.SortedList;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 
 /**
@@ -26,10 +25,10 @@ public class StudentRecordIO  {
 	 * @return students an array list containing all Students in the input file
 	 * @throws FileNotFoundException thrown if unable to read the fileName
 	 */
-	public static ArrayList<Student> readStudentRecords(String fileName) throws FileNotFoundException {
+	public static SortedList<Student> readStudentRecords(String fileName) throws FileNotFoundException {
 
 		Scanner scan = new Scanner(new FileInputStream(fileName));
-		ArrayList<Student> students = new ArrayList<Student>();
+		SortedList<Student> students = new SortedList<Student>();
 
 		while (scan.hasNextLine()) {
 			Student addingStudent = processStudent(scan.nextLine());
@@ -47,7 +46,7 @@ public class StudentRecordIO  {
 	 * @param studentDirectory the directory containing the Students array list
 	 * @throws IOException thrown if unable to write to the fileName
 	 */
-	public static void writeStudentRecords(String fileName, ArrayList<Student> studentDirectory) throws IOException {
+	public static void writeStudentRecords(String fileName, SortedList<Student> studentDirectory) throws IOException {
 		try {
 		PrintStream output = new PrintStream(new File (fileName));
 		for (int i = 0; i < studentDirectory.size(); i++) {
@@ -106,7 +105,7 @@ public class StudentRecordIO  {
 					try {
 						if(!in.hasNext()) {  //Should run if there is nothing in the credits thing, if there is no integer next
 							student = new Student(first, last, id, email, password);
-						} //else, it would skip it when adding to arraylist
+						} //else, it would skip it when adding to SortedList
 					}
 					catch (IllegalArgumentException e) {
 						//Since the student's data does't make sense, a Null will be returned instead
