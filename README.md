@@ -23,3 +23,7 @@ Complete Final Javadoc              Brian                 02/02/2020
 Updated compareTo() in Student      Brian                 02/04/2020      Completed in class
 Update BBTP                         Brian                 02/04/2020      Fix order for loading student directory
 Completed all Sorted List Tests     Chris                 02/04/2020
+Updated StudentRecordIO             Jack                  02/04/2020      Completed in lab
+Updated StudentDirectory            Jack                  02/04/2020      Completed in lab
+Updated StudentDirectoryTest        Jack                  02/04/2020      Completed in lab
+Purged all ArrayList references     Jack                  02/04/2020      Completed in lab
