@@ -22,3 +22,4 @@ Update README file                  Chris                 1/30/2020
 Complete Final Javadoc              Brian                 02/02/2020
 Updated compareTo() in Student      Brian                 02/04/2020      Completed in class
 Update BBTP                         Brian                 02/04/2020      Fix order for loading student directory
+Completed all Sorted List Tests     Chris                 02/04/2020
