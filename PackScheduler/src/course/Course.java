@@ -10,7 +10,7 @@ package course;
  * @author Brian Alonso
  *
  */
-public class Course extends Activity {
+public class Course extends Activity implements Comparable<Course> {
 
 	/** Course's name. */
 	private String name;
@@ -264,6 +264,44 @@ public class Course extends Activity {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
+	}
+
+	/**
+	 * This method is used to compare two courses based on the course name and the section number. 
+	 * Names will be sorted alphabetically and section numbers will be sorted from lowest to highest.
+	 * If a course has the section "A" then it should be sorted below the courses with section numbers.
+	 */
+	@Override
+	public int compareTo(Course o) {
+		
+		Course c2 = o;
+
+		String n1 = getName();
+		String n2 = c2.getName();
+		
+		String s1 = getSection();
+		String s2 = c2.getSection();
+
+		if (n1.compareTo(n2) == 0) {
+			if (s1.compareTo(s2) == 0) {
+				return 0;
+			} else {
+				if (s1.compareTo(s2) < 0) {
+					return -1;
+				} else if (s1.compareTo(s2) > 0) {
+					return 1;
+				}
+			}
+		} else {
+			if (n1.compareTo(n2) < 0) {
+				return -1;
+			} else if (n1.compareTo(n2) > 0) {
+				return 1;
+			}
+		}
+		
+		return 0;
+		
 	}
 
 }

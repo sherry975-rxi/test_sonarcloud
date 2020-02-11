@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.ncsu.csc216.pack_scheduler.user.Student;
+
 /**
  * Tests the Course class.
  * 
@@ -693,6 +695,55 @@ public class CourseTest {
 		Activity c2 = new Course(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, "A");
 		String s2 = "CSC216,Programming Concepts - Java,001,4,sesmith5,A";
 		assertEquals(s2, c2.toString());
+	}
+	
+	/**
+	 * This method is used to test the compareTo() method in Course.
+	 * Names will be sorted alphabetically and section numbers will be sorted from lowest to highest.
+	 * If a course has the section "A" then it should be sorted below the courses with section numbers.
+	 */
+	@Test
+	public void testCompareTo() {
+		
+		Course c1 = new Course(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME);
+		Course c2 = new Course(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME);
+		
+		int x = c1.compareTo(c2);
+		int y = c2.compareTo(c1);
+		
+		assertEquals(x, 0); //should be the same
+		assertEquals(y, 0); //should be the same
+		
+		try {
+			Course s3 = null;
+			c1.compareTo(s3);
+			fail();
+		} catch (NullPointerException e) {
+			assertTrue(c1.equals(new Course(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME))); //making sure it doesn't change
+		}
+		
+		
+		//testing for a different course name
+		Course c3 = new Course("ABC123", TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME); //creating a new course
+		
+		int z = c1.compareTo(c3); //should be -1
+		
+		int a = c3.compareTo(c1); //should be 1
+		
+		assertEquals(1, z);
+		assertEquals(-1, a);
+		
+		//testing for a different section number
+		c2.setSection("002");
+		
+		int b = c1.compareTo(c2); //should be 1
+		
+		int c = c2.compareTo(c1); //should be -1
+		
+		assertEquals(-1, b);
+		assertEquals(1, c);
+		
+		
 	}
 
 }
