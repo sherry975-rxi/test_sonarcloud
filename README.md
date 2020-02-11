@@ -27,3 +27,5 @@ Updated StudentRecordIO             Jack                  02/04/2020      Comple
 Updated StudentDirectory            Jack                  02/04/2020      Completed in lab
 Updated StudentDirectoryTest        Jack                  02/04/2020      Completed in lab
 Purged all ArrayList references     Jack                  02/04/2020      Completed in lab
+Generate javadoc                    Brian                 02/18/2020      Yet to complete
+Finish merging projects             Brian                 02/11/2020      In progress
