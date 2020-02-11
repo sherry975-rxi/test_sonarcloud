@@ -1,4 +1,4 @@
-package course;
+package edu.ncsu.csc216.pack_scheduler.course;
 
 /**
  * Parent class for Course and Activity.

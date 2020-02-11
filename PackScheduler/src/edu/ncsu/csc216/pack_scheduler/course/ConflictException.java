@@ -1,7 +1,7 @@
 /**
  * 
  */
-package course;
+package edu.ncsu.csc216.pack_scheduler.course;
 
 /**
  * This extended exception is intended to be used when there are scheduling conflicts

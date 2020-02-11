@@ -1,11 +1,13 @@
 /**
  * 
  */
-package course;
+package edu.ncsu.csc216.pack_scheduler.course;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import edu.ncsu.csc216.pack_scheduler.course.ConflictException;
 
 /**
  * This Class tests the implementation of the ConflictException and ensures it has a correct 

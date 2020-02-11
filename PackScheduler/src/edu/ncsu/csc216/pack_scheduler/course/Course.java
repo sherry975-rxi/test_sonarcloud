@@ -1,7 +1,7 @@
 /**
  * 
  */
-package course;
+package edu.ncsu.csc216.pack_scheduler.course;
 
 /**
  * Class for a that is the primary object of a course.

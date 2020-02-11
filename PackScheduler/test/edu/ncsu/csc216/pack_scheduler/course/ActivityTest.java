@@ -1,11 +1,15 @@
 /**
  * 
  */
-package course;
+package edu.ncsu.csc216.pack_scheduler.course;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import edu.ncsu.csc216.pack_scheduler.course.Activity;
+import edu.ncsu.csc216.pack_scheduler.course.ConflictException;
+import edu.ncsu.csc216.pack_scheduler.course.Course;
 
 /**
  * This class tests {@link Activity} and tests for its implementation of the checkConflict() method.

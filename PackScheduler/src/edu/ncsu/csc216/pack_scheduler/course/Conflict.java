@@ -1,7 +1,7 @@
 /**
  * 
  */
-package course;
+package edu.ncsu.csc216.pack_scheduler.course;
 
 /**
  * This interface outlines the behavior of a scheduling conflict and will be implemented
