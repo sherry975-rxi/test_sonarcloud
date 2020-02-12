@@ -90,11 +90,11 @@ public class CourseCatalogTest {
 		assertEquals(8, c1.getCourseCatalog().length);
 
 		//Attempt to add a course that does exist
-		assertTrue(c1.addCourse(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME));
+		assertTrue(c1.addCourseToCatalog(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME));
 		assertEquals("Actual: " + c1.getCourseCatalog().length, 9, c1.getCourseCatalog().length);
 
 		//Attempt to add a course that already exists
-		assertFalse(c1.addCourse(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME));
+		assertFalse(c1.addCourseToCatalog(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME));
 		assertEquals(9, c1.getCourseCatalog().length);
 
 	}

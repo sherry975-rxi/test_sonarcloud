@@ -69,7 +69,7 @@ public class CourseCatalog {
 	 * @param endTime the end time of the course to add to the catalog
 	 * @return true if the course was successfully added
 	 */
-	public boolean addCourse(String name, String title, String section, int credits, String instructorID, 
+	public boolean addCourseToCatalog(String name, String title, String section, int credits, String instructorID, 
 			String meetingDays, int startTime, int endTime) {
 		
 		Course courseToAdd = new Course(name, title, section, credits, instructorID, 
