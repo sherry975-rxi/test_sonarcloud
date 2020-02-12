@@ -27,9 +27,9 @@ public class CourseCatalogTest {
 	private final String validTestFile = "test-files/course_records.txt";
 	/** Invalid course records */
 	private final String invalidTestFile = "test-files/invalid_course_records.txt";
-	
+
 	/** Course name */
-	private static final String NAME = "CSC216";
+	private static final String NAME = "CSC416";
 	/** Course title */
 	private static final String TITLE = "Programming Concepts - Java";
 	/** Course section */
@@ -61,7 +61,7 @@ public class CourseCatalogTest {
 			fail("Unable to reset files");
 		}
 	}
-	
+
 	/**
 	 * Tests CourseCatalog().
 	 */
@@ -73,13 +73,13 @@ public class CourseCatalogTest {
 		assertEquals(0, c1.getCourseCatalog().length);
 		c1.saveCourseCatalog("test-files/actual_empty_export.txt");
 		checkFiles("test-files/expected_empty_export.txt", "test-files/actual_empty_export.txt");
-		
+
 		//Test with valid file containing 8 courses.  Will test other methods in other tests.
 		CourseCatalog c2 = new CourseCatalog();
 		c2.loadCoursesFromFile(validTestFile);
 		assertEquals(8, c2.getCourseCatalog().length);		
 	}
-	
+
 	/**
 	 * Test CourseCatalog.addCourse().
 	 */
@@ -88,64 +88,56 @@ public class CourseCatalogTest {
 		CourseCatalog c1 = new CourseCatalog();
 		c1.loadCoursesFromFile(validTestFile);
 		assertEquals(8, c1.getCourseCatalog().length);
-		
-		//Attempt to add a course that doesn't exist
-		assertFalse(c1.addCourse("CSC492", TITLE, "001", CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME));
-		assertEquals(8, c1.getCourseCatalog().length);
-		
-		Course c = new Course(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME);
-		
+
 		//Attempt to add a course that does exist
 		assertTrue(c1.addCourse(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME));
+		assertEquals("Actual: " + c1.getCourseCatalog().length, 9, c1.getCourseCatalog().length);
+
+		//Attempt to add a course that already exists
+		assertFalse(c1.addCourse(NAME, TITLE, SECTION, CREDITS, INSTRUCTOR_ID, MEETING_DAYS, START_TIME, END_TIME));
 		assertEquals(9, c1.getCourseCatalog().length);
-		
+
 	}
-	
+
 	/**
-	 * Test WolfScheduler.removeCourse().
+	 * Test CourseCatalog.getCourseFromCatalog()
 	 */
 	@Test
-	public void testRemoveCourse() {
+	public void testGetCourseFromCatalog() {
 		CourseCatalog c1 = new CourseCatalog();
 		c1.loadCoursesFromFile(validTestFile);
-		
-		//Attempt to remove from empty schedule
-		assertFalse(ws.removeCourse(NAME, SECTION));
-		
-		//Add some courses and remove them
-		assertTrue(ws.addCourse(NAME, SECTION));
-		assertTrue(ws.addCourse("CSC226", "001"));
-		assertTrue(ws.addCourse("CSC116", "002"));
-		assertEquals(3, ws.getScheduledCourses().length);
-		assertEquals(3, ws.getFullScheduledCourses().length);
-		
-		//Check that removing a course that doesn't exist when there are 
-		//scheduled courses doesn't break anything
-		assertFalse(ws.removeCourse("CSC492", "001"));
-		assertEquals(3, ws.getScheduledCourses().length);
-		assertEquals(3, ws.getFullScheduledCourses().length);
-		
-		//Remove CSC226
-		assertTrue(ws.removeCourse("CSC226", "001"));
-		assertEquals(2, ws.getScheduledCourses().length);
-		assertEquals(2, ws.getFullScheduledCourses().length);
-		
-		//Remove CSC116
-		assertTrue(ws.removeCourse("CSC116", "002"));
-		assertEquals(1, ws.getScheduledCourses().length);
-		assertEquals(1, ws.getFullScheduledCourses().length);
-		
-		//Remove CSC216
-		assertTrue(ws.removeCourse(NAME, SECTION));
-		assertEquals(0, ws.getScheduledCourses().length);
-		assertEquals(0, ws.getFullScheduledCourses().length);
-		
-		//Check that removing all doesn't break future adds
-		assertTrue(ws.addCourse("CSC230", "001"));
-		assertEquals(1, ws.getScheduledCourses().length);
-		assertEquals(1, ws.getFullScheduledCourses().length);
+
+		//not a real course
+		Course c = c1.getCourseFromCatalog("NotReal", "NotReal");
+		assertNull(c);
+
+		//a real course
+		Course c2 = c1.getCourseFromCatalog("CSC216", "001");
+		assertEquals(c2.getSection(), SECTION);
+
 	}
-	
+
+	/**
+	 * Test CourseCatalog.removeCourseFromCatalog()
+	 */
+	@Test
+	public void testRemoveCourseFromCatalog() {
+		CourseCatalog c1 = new CourseCatalog();
+		c1.loadCoursesFromFile(validTestFile);
+
+		//not a real course
+		boolean c = c1.removeCourseFromCatalog("NotReal", "NotReal");
+		assertFalse(c);
+
+		//a real course
+		boolean c2 = c1.removeCourseFromCatalog("CSC216", "001");
+		assertTrue(c2);
+		
+		Course c3 = c1.getCourseFromCatalog("CSC216", "001");
+		assertNull(c3);
+
+	}
+
 	/**
 	 * Test CourseCatalog.newCourseCatalog()
 	 */
@@ -153,15 +145,15 @@ public class CourseCatalogTest {
 	public void testResetCatalog() {
 		CourseCatalog c1 = new CourseCatalog();
 		c1.loadCoursesFromFile(validTestFile);
-		
+
 		assertEquals(8, c1.getCourseCatalog().length);
-		
+
 		c1.newCourseCatalog();
-		
+
 		assertEquals(0, c1.getCourseCatalog().length);
-		
+
 	}
-	
+
 	/**
 	 * Test CourseCatalog.getCourseCatalog().
 	 */
@@ -169,7 +161,7 @@ public class CourseCatalogTest {
 	public void testGetCourseCatalog() {
 		CourseCatalog c1 = new CourseCatalog();
 		c1.loadCoursesFromFile(validTestFile);
-		
+
 		//Get the catalog and make sure contents are correct
 		//Name, section, title
 		String [][] catalog = c1.getCourseCatalog();
@@ -206,25 +198,7 @@ public class CourseCatalogTest {
 		assertEquals("001", catalog[7][1]);
 		assertEquals("C and Software Tools", catalog[7][2]);
 	}
-	
-	/**
-	 * Test WolfScheduler.exportSchedule().
-	 */
-	@Test
-	public void testExportSchedule() {
-		//Test that empty schedule exports correctly
-		WolfScheduler ws = new WolfScheduler(validTestFile);
-		ws.exportSchedule("test-files/actual_empty_export.txt");
-		checkFiles("test-files/expected_empty_export.txt", "test-files/actual_empty_export.txt");
-		
-		//Add courses and test that exports correctly
-		ws.addCourse("CSC216", "002");
-		ws.addCourse("CSC226", "001");
-		assertEquals(2, ws.getScheduledCourses().length);
-		ws.exportSchedule("test-files/actual_schedule_export.txt");
-		checkFiles("test-files/expected_schedule_export.txt", "test-files/actual_schedule_export.txt");
-	}
-	
+
 	/**
 	 * Helper method to compare two files for the same contents
 	 * @param expFile expected output
@@ -234,19 +208,19 @@ public class CourseCatalogTest {
 		try {
 			Scanner expScanner = new Scanner(new File (expFile));
 			Scanner actScanner = new Scanner(new File(actFile));
-			
+
 			while (actScanner.hasNextLine()) {
 				assertEquals(expScanner.nextLine(), actScanner.nextLine());
 			}
 			if (expScanner.hasNextLine()) {
 				fail();
 			}
-			
+
 			expScanner.close();
 			actScanner.close();
 		} catch (IOException e) {
 			fail("Error reading files.");
 		}
 	}
-	
+
 }

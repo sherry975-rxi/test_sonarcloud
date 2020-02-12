@@ -5,26 +5,27 @@ package edu.ncsu.csc216.pack_scheduler.catalog;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import edu.ncsu.csc216.collections.list.SortedList;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
-import edu.ncsu.csc216.pack_scheduler.course.Activity;
 import edu.ncsu.csc216.pack_scheduler.io.CourseRecordIO;
 
 /**
+ * This class represents a catalog of courses, and allows for courses to be added,
+ * removed, the catalog saved, and the catalog loaded in from a file.
  * @author Brian Alonso
  *
  */
 public class CourseCatalog {
 	
 	/**
-	 * 
+	 * Collection used to store courses, sorted by name and section number.
 	 */
 	private SortedList<Course> catalog;
 	
 	/**
-	 * 
+	 * Constructor for CourseCatalog. No inputs. This constructor creates a new empty catalog 
+	 * of courses which is stored in a sorted list collection.
 	 */
 	public CourseCatalog() {
 		newCourseCatalog();
@@ -32,7 +33,8 @@ public class CourseCatalog {
 	}
 
 	/**
-	 * 
+	 * Creates a new course catalog, which is an empty catalog of courses which is stored in
+	 * a sorted list collection.
 	 */
 	public void newCourseCatalog() {
 		catalog = new SortedList<Course>();
@@ -56,22 +58,16 @@ public class CourseCatalog {
 	
 	
 	/**
-	 * Method for adding a course to the schedule. If the course has already been added to the schedule, no matter the
-	 * section an exception will be thrown. The method also checks the course is in the catalog.
-	 * @param name the name of the course to add to the schedule
-	 * @param section the section of the course to add to the schedule
+	 * Method for adding a course to the catalog if the course is not already in the catalog.
+	 * @param name the name of the course to add to the catalog
+	 * @param title the title of the course to add to the catalog
+	 * @param section the section of the course to add to the catalog
+	 * @param credits the number of credits of the course to add to the catalog
+	 * @param instructorID the instructor of the course to add to the catalog's unity ID
+	 * @param meetingDays the meeting days of the course to add to the catalog
+	 * @param startTime the start time of the course to add to the catalog
+	 * @param endTime the end time of the course to add to the catalog
 	 * @return true if the course was successfully added
-	 */
-	/**
-	 * @param name
-	 * @param title
-	 * @param section
-	 * @param credits
-	 * @param instructorID
-	 * @param meetingDays
-	 * @param startTime
-	 * @param endTime
-	 * @return
 	 */
 	public boolean addCourse(String name, String title, String section, int credits, String instructorID, 
 			String meetingDays, int startTime, int endTime) {
@@ -80,7 +76,6 @@ public class CourseCatalog {
 				meetingDays, startTime, endTime);
 		
 		boolean added = false;
-		boolean validCourse = false;
 		boolean inCatalog = false;
 		//checking if in the catalog already
 		for (int i = 0; i < catalog.size(); i++) {
@@ -89,7 +84,7 @@ public class CourseCatalog {
 			}
 		}
 
-		if (validCourse && !inCatalog) {
+		if (!inCatalog) {
 			catalog.add(courseToAdd);
 			added = true;
 		}
@@ -101,15 +96,19 @@ public class CourseCatalog {
 	/**
 	 * Method for removing a course from the schedule by checking if it is in the schedule, and then removing the
 	 * instance.
-	 * @param idx the index of the activity to be removed
+	 * @param name the name of the course to remove from the catalog
+	 * @param section the section of the course to remove from the catalog
 	 * @return true if the course was successfully removed
 	 */
-	public boolean removeCourseFromCatalog(int idx) {
+	public boolean removeCourseFromCatalog(String name, String section) {
 		boolean removed = false;
 		//checking if in the schedule and a valid index
-		if (idx >= 0 && idx < catalog.size() && catalog.get(idx) != null) {
-			catalog.remove(idx); //remove
-			removed = true;
+		for (int i = 0; i < catalog.size(); i++) {
+			if (name.equals(catalog.get(i).getName()) &&
+					section.equals(catalog.get(i).getSection())) {
+				catalog.remove(i);
+				removed = true;
+			}
 		}
 		return removed;
 	}
